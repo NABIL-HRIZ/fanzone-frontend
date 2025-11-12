@@ -1,0 +1,157 @@
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  font-family: "Protest Riot", sans-serif;
+  overflow: hidden;
+  margin-top: -80px;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  z-index:-2;
+}
+
+
+.video-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+   object-position:top;
+  z-index: -1;
+}
+
+
+
+.section-content {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; 
+  padding:80px 80px;
+  z-index: 1;
+}
+
+
+
+.content-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.content-left h3 {
+  width:800px; 
+  color: rgb(14, 13, 13);
+  font-size:60px;
+  text-transform: capitalize;
+
+}
+.content-left p{
+  width:400px;
+  font-size: 18px;
+  color: #393939;
+
+}
+.content-left button{
+  padding: 8px 15px;
+  font-size:18px;
+    background-color: rgba(14, 131, 5, 0.854);
+
+  border: none;
+  outline: none;
+  transition: 0.5s ease-in-out;
+}
+.content-left button:hover{
+  background-color: #7d9766;
+}
+
+.content-right {
+    margin-bottom:40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color:rgba(14, 131, 5, 0.854);
+  padding:18px;
+}
+
+.content-right img {
+  width:150px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.content-right h4 {
+  margin: 3px 0;
+  color: rgb(209, 208, 208);
+  font-size: 15px;
+  background-color: rgba(14, 131, 5, 0.854);
+}
+.content-right h3{
+  margin: 3px 0;
+    color: #f4f0f0;
+    font-size:18px;
+    font-weight: 600;
+  background-color: rgba(14, 131, 5, 0.854);
+
+}
+
+@media (max-width: 768px) {
+  .section-content {
+    padding-top:100px;
+    justify-content: center;
+    
+  }
+
+  .content-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .stars{
+    margin-left: 30px;
+  }
+
+  .content-left h3 {
+    width: 100%;
+    font-size: 28px;
+  }
+
+  .content-left p {
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  .content-right {
+    margin-top: 20px;
+    width: 100%;
+    display:none;
+  }
+
+  .content-right img {
+    width: 120px;
+  }
+ 
+ .video-bg {
+    width: 100%;
+    height: 110%;
+    object-fit: cover;
+  }
+
+
+}
