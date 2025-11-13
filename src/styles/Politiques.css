@@ -1,0 +1,314 @@
+.politiques-container {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+.politiques-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+
+
+.politiques-header {
+  text-align: center;
+  padding: 4rem 2rem 2rem;
+  background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+.politiques-header h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(45deg, #137c1a, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-divider {
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #C1272D, #f3f2eb);
+  margin: 0 auto;
+  border-radius: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+.politiques-body {
+  padding: 3rem 2rem;
+}
+
+.intro-section {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.intro-text {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 1.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.intro-text strong {
+  background: linear-gradient(45deg, #C1272D, #006233);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.cases-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.case-card {
+  background: #ffffff;
+  border: 2px solid #f0f0f0;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.case-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #C1272D, #006233);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.case-card:hover {
+  transform: translateY(-5px);
+  border-color: #C1272D;
+}
+
+.case-card:hover::before {
+  opacity: 1;
+}
+
+.case-header {
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+  padding: 2rem 2rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.case-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c2b2b;
+  margin: 0;
+  position: relative;
+  display: inline-block;
+}
+
+.case-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(45deg, #C1272D, #006233);
+  border-radius: 2px;
+}
+
+.case-content {
+  padding: 1.5rem 2rem 2rem;
+}
+
+.case-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.case-list li {
+  position: relative;
+  padding: 1rem 0 1rem 3rem;
+  margin-bottom: 0.5rem;
+  color: #555;
+  line-height: 1.6;
+  border-bottom: 1px solid #f8f9fa;
+  transition: all 0.3s ease;
+}
+
+.case-list li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.case-list li:hover {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding-left: 3.5rem;
+}
+
+.list-marker {
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(45deg, #C1272D, #006233);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.case-list li:hover .list-marker {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(192, 39, 45, 0.3);
+}
+
+.case-list li strong {
+  color: #C1272D;
+  font-weight: 700;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.case-card {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+
+
+@media (max-width: 768px) {
+  .politiques-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .politiques-header {
+    padding: 3rem 1rem 1.5rem;
+  }
+  
+  .politiques-header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .politiques-body {
+    padding: 2rem 1rem;
+  }
+  
+  .intro-text {
+    font-size: 1.1rem;
+  }
+  
+  .case-header {
+    padding: 1.5rem 1.5rem 1rem;
+  }
+  
+  .case-header h2 {
+    font-size: 1.3rem;
+  }
+  
+  .case-content {
+    padding: 1rem 1.5rem 1.5rem;
+  }
+  
+  .case-list li {
+    padding: 0.8rem 0 0.8rem 2.5rem;
+  }
+  
+  .case-list li:hover {
+    padding-left: 3rem;
+  }
+  
+  .list-marker {
+    width: 20px;
+    height: 20px;
+    top: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .politiques-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .intro-text {
+    font-size: 1rem;
+  }
+  
+  .case-header h2 {
+    font-size: 1.2rem;
+  }
+  
+  .case-list li {
+    padding: 0.7rem 0 0.7rem 2.2rem;
+    font-size: 0.95rem;
+  }
+  
+  .list-marker {
+    width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+  }
+}
+
+/* Effets de focus pour l'accessibilité */
+.case-card:focus-within {
+  outline: 2px solid #C1272D;
+  outline-offset: 2px;
+}
+
+.case-list li:focus {
+  outline: none;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+/* Style pour les éléments importants */
+.case-list li strong {
+  position: relative;
+}
+
+.case-list li strong::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(45deg, #C1272D, #006233);
+  opacity: 0.7;
+}

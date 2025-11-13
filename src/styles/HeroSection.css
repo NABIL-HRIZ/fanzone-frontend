@@ -55,7 +55,7 @@
 
 .content-left h3 {
   width:800px; 
-  color: rgb(14, 13, 13);
+  color: rgb(246, 244, 244);
   font-size:60px;
   text-transform: capitalize;
 
@@ -63,7 +63,7 @@
 .content-left p{
   width:400px;
   font-size: 18px;
-  color: #393939;
+  color: #f8f8f8;
 
 }
 .content-left button{

@@ -1,0 +1,340 @@
+.contact-us-container {
+  min-height: 100vh;
+  padding: 4rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-us-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  
+}
+
+.contact-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  background: linear-gradient(45deg, #C1272D, #006233);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.contact-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #C1272D, #006233);
+  border-radius: 2px;
+}
+
+.contact-subtitle {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: #434141;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-content {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #C1272D, #006233);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+}
+
+.form-group {
+  position: relative;
+  color: #000;
+
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(56, 54, 54, 0.2) !important;
+  border-radius: 16px;
+  padding: 1.5rem 1.5rem 1.5rem 3.5rem;
+    color: #000 !important;
+
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  outline: none;
+  resize: vertical;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(46, 45, 45, 0.6);
+  transition: color 0.3s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #006233;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 3px rgba(0, 98, 51, 0.2);
+  transform: translateY(-2px);
+  color: #000;
+}
+
+
+
+
+.form-textarea {
+  min-height: 150px;
+  padding-top: 1.5rem;
+}
+
+.submit-btn {
+  background: linear-gradient(45deg, #C1272D, #006233);
+  border: none;
+  color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+
+
+.submit-btn:active {
+  transform: translateY(-1px);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submit-btn.loading {
+  background: linear-gradient(45deg, #666, #888);
+  color: transparent;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contact-header {
+  animation: fadeInUp 0.6s ease;
+}
+
+.contact-content {
+  animation: fadeInUp 0.6s ease 0.2s both;
+}
+
+.form-group {
+  animation: fadeInUp 0.6s ease both;
+}
+
+.form-group:nth-child(1) { animation-delay: 0.3s; }
+.form-group:nth-child(2) { animation-delay: 0.4s; }
+.form-group:nth-child(3) { animation-delay: 0.5s; }
+.submit-btn { animation: fadeInUp 0.6s ease 0.6s both; }
+
+/* Effet de validation */
+.form-input:valid:not(:focus),
+.form-textarea:valid:not(:focus) {
+  border-color: rgba(0, 98, 51, 0.5);
+}
+
+.form-input:invalid:not(:focus):not(:placeholder-shown),
+.form-textarea:invalid:not(:focus):not(:placeholder-shown) {
+  border-color: rgba(192, 39, 45, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-us-container {
+    padding: 2rem 1rem;
+  }
+  
+  .contact-title {
+    font-size: 2.5rem;
+  }
+  
+  .contact-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .contact-content {
+    padding: 2rem 1.5rem;
+  }
+  
+  .form-input, .form-textarea {
+    padding: 1.25rem 1.25rem 1.25rem 3rem;
+    font-size: 1rem;
+  }
+  
+  .form-group::before {
+    left: 1.25rem;
+    font-size: 1.1rem;
+  }
+  
+  .submit-btn {
+    padding: 1.25rem 1.5rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-title {
+    font-size: 2rem;
+  }
+  
+  .contact-subtitle {
+    font-size: 1rem;
+  }
+  
+  .contact-content {
+    padding: 1.5rem 1rem;
+    border-radius: 16px;
+  }
+  
+  .form-input, .form-textarea {
+    padding: 1rem 1rem 1rem 2.5rem;
+    border-radius: 12px;
+  }
+  
+  .form-group::before {
+    left: 1rem;
+    font-size: 1rem;
+  }
+  
+  .submit-btn {
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+  }
+}
+
+/* Effet de particules flottantes */
+.contact-us-container::after {
+  content: '⚽ 🏆 🇲🇦 ★ ✨';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-size: 1.5rem;
+  opacity: 0.05;
+  animation: float 15s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-15px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(0) rotate(180deg);
+  }
+  75% {
+    transform: translateY(15px) rotate(270deg);
+  }
+}
+
+/* Style pour les états de focus accessibles */
+.form-input:focus,
+.form-textarea:focus,
+.submit-btn:focus {
+  outline: 2px solid #FFD700;
+  outline-offset: 2px;
+}
+
+/* Effet de pulsation pour le bouton */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(192, 39, 45, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(192, 39, 45, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(192, 39, 45, 0);
+  }
+}
+
+.submit-btn:not(:disabled):not(.loading) {
+  animation: pulse 2s infinite;
+}

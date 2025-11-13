@@ -7,6 +7,12 @@ import Register from './auth/Register';
 import HeroSection from './componants/HeroSection';
 import WhoUs from './componants/WhoUs';
 import Faqs from './componants/Faqs';
+import Footer from './componants/Footer';
+import Politiques from './componants/Politiques';
+import Subscibes from './componants/Subscribers';
+import ContactUs from './componants/ContactUs';
+import About from './componants/About';
+import ShowZones from './componants/ShowZones';
 const App = () => {
   return (
    <>
@@ -18,6 +24,9 @@ const App = () => {
      <Route path='/' element={
           <>
             <HeroSection/>
+            <ShowZones />
+            <About />
+            <Subscibes />
          
           </>
 
@@ -26,8 +35,11 @@ const App = () => {
 
         <Route path='/qui-sommes-nous' element={<WhoUs />} />
         <Route path='/faq' element={<Faqs/>} />
+        <Route path='/politique' element={<Politiques/>} />
+        <Route path='/contact' element={<ContactUs/>} />
 
     </Routes>
+    <Footer />
    </Router>
    </>
   )

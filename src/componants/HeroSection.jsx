@@ -17,28 +17,28 @@ const HeroSection = () => {
     <section className='hero-section'>
       <div className="section-content" >
 
-       {/* <video
+        <video
         className="video-bg"
          autoPlay
         muted   
          loop     
       >
-        <source src="./hero-video.mp4" type="video/mp4" />  
+        <source src="./fan_video.mp4" type="video/mp4" />  
         
-      </video>  */}
+      </video>  
        
        
 
     
-        <div className='content-section'>
+        <div className='content-section' style={{backgroundColor:'transparent'}}>
           
           <div 
-            className='content-left' data-aos="fade-right" data-aos-delay="500">
+            className='content-left' data-aos="fade-right" data-aos-delay="500" style={{backgroundColor:'transparent'}}>
 
-            <h3>Découvrez, réservez et célébrez la CAN 2025  !</h3>
+            <h3 style={{backgroundColor:'transparent'}}>Découvrez, réservez et célébrez la CAN 2025  !</h3>
  
            
-            <p style={{width:'90%'}}>Réservez vos places, explorez les fan zones et plongez dans l’univers unique de la CAN 2025 en un seul clic.</p>
+            <p style={{width:'90%', backgroundColor:'transparent'}}>Réservez vos places, explorez les fan zones et plongez dans l’univers unique de la CAN 2025 en un seul clic.</p>
             <button><Link to="/chercher" style={{color:'#fff',textDecoration:"none",backgroundColor:"rgba(14, 131, 5, 0.854)"}}><i className="fa-solid fa-circle-play"></i> Trouver un match</Link> </button>
           </div>
 

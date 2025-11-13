@@ -1,0 +1,246 @@
+.subscribe-section {
+  padding: 1rem 1rem;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: -80px;
+}
+
+
+.subscribe-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.subscribe-content {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 4rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+.subscribe-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(45deg, #832c14, #097d2c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.subscribe-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #C1272D, #3f7b07);
+  border-radius: 2px;
+}
+
+.subscribe-description {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #1a1919;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.newsletter-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+
+
+.email-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 1rem 1.5rem;
+  color: rgb(52, 51, 51);
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  border-left: 1px solid #000;
+}
+
+.email-input::placeholder {
+  color: rgba(32, 32, 32, 0.6);
+  transition: color 0.3s ease;
+}
+
+.email-input:focus::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.subscribe-btn {
+  background: linear-gradient(45deg, #C1272D, #006233);
+  border: none;
+  color: white;
+  padding: .6rem 0.6rem !important;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  min-width: 140px;
+}
+
+
+
+.subscribe-btn:hover::before {
+  left: 100%;
+}
+
+.subscribe-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(192, 39, 45, 0.4);
+  background: linear-gradient(45deg, #006233, #C1272D);
+}
+
+.subscribe-btn:active {
+  transform: translateY(0);
+}
+
+.subscribe-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.message {
+  margin-top: 1.5rem;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+ 
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #084602;
+}
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+  .subscribe-section {
+    padding: 3rem 1rem;
+  }
+  
+  .subscribe-content {
+    padding: 3rem 2rem;
+  }
+  
+  .subscribe-title {
+    font-size: 2rem;
+  }
+  
+  .subscribe-description {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .input-group {
+    flex-direction: column;
+    gap: 1rem;
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+  
+  .email-input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    margin-bottom: 0;
+  }
+  
+  .subscribe-btn {
+    border-radius: 12px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .subscribe-content {
+    padding: 2rem 1.5rem;
+  }
+  
+  .subscribe-title {
+    font-size: 1.7rem;
+  }
+  
+  .subscribe-description {
+    font-size: 1rem;
+  }
+  
+  .email-input {
+    padding: 1rem 1.2rem;
+    font-size: 1rem;
+  }
+  
+  .subscribe-btn {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* Loading state */
+.subscribe-btn.loading {
+  position: relative;
+  color: transparent;
+}
+
+.subscribe-btn.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Success state */
+.message.success {
+  background: rgba(0, 98, 51, 0.2);
+  border-color: rgba(0, 98, 51, 0.5);
+  color: #00ff88;
+}
+
+/* Error state */
+.message.error {
+  background: rgba(192, 39, 45, 0.2);
+  border-color: rgba(192, 39, 45, 0.5);
+  color: #ff4444;
+}

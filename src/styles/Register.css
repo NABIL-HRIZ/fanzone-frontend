@@ -1,4 +1,3 @@
-/* Register.css */
 .register-container {
   min-height: 100vh;
   display: flex;
@@ -11,7 +10,6 @@
   backdrop-filter: blur(20px);
   border-radius: 20px;
   padding: 3rem;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3);
   width: 100%;
   width:600px;
@@ -24,14 +22,14 @@
 }
 
 .register-header h2 {
-  color: #fff;
+  color: #2c2a2a;
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
 .register-header p {
-  color: #e9eaeb;
+  color: #4d4d4e;
   font-size: 1rem;
 }
 
@@ -53,7 +51,7 @@
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #dededf;
+  color: #767678;
   font-weight: 600;
   font-size: 0.9rem;
 }
@@ -65,14 +63,14 @@
   border-radius: 12px;
   font-size: 1rem;
   transition: all 0.3s ease;
-  background: rgb(26, 25, 25);
+  background: rgb(232, 234, 232);
   box-sizing: border-box;
   color: #ffff;
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #b5b6b7;
+  border-color: #0a7748;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
   transform: translateY(-2px);
 }
