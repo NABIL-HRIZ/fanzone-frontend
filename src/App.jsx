@@ -13,6 +13,8 @@ import Subscibes from './componants/Subscribers';
 import ContactUs from './componants/ContactUs';
 import About from './componants/About';
 import ShowZones from './componants/ShowZones';
+import ShowAllZones from './componants/ShowAllZones';
+import ZoneDetail from './componants/ZoneDetail';
 const App = () => {
   return (
    <>
@@ -25,6 +27,7 @@ const App = () => {
           <>
             <HeroSection/>
             <ShowZones />
+            <ShowAllZones />
             <About />
             <Subscibes />
          
@@ -37,6 +40,8 @@ const App = () => {
         <Route path='/faq' element={<Faqs/>} />
         <Route path='/politique' element={<Politiques/>} />
         <Route path='/contact' element={<ContactUs/>} />
+
+         <Route path="/zone/:id" element={<ZoneDetail />} />
 
     </Routes>
     <Footer />

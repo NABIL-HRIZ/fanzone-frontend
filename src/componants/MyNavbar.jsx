@@ -48,6 +48,9 @@ function MyNavbar() {
         </Link>
 
         <div className="nav-center">
+          <Link className="nav-link-modern" to="/matches" onClick={closeDropdown}>
+            Toutes les matches
+          </Link>
           <Link className="nav-link-modern" to="/qui-sommes-nous" onClick={closeDropdown}>
             Qui Sommes Nous ?
           </Link>

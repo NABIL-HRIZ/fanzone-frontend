@@ -1,16 +1,53 @@
-# React + Vite
+# FanZone - Front-end
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ce fichier README est destiné uniquement au dossier `front_end`.
 
-Currently, two official plugins are available:
+## Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+L'interface cliente de FanZone est construite avec React + Vite. Ce projet contient les sources, les styles et la configuration pour le build et le développement local.
 
-## React Compiler
+## Pré-requis
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js (v16+ recommandé)
+- npm ou yarn
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Se placer dans le dossier `front_end`.
+2. Installer les dépendances :
+
+   npm install
+
+Ou avec yarn :
+
+     yarn
+
+## Démarrage en développement
+
+    npm run dev
+
+ou
+
+    yarn dev
+
+Cela lance le serveur Vite avec HMR. Le point d'entrée principal est `src/main.jsx`.
+
+## Build pour production
+
+    npm run build
+
+ou
+
+    yarn build
+
+Le résultat sera dans le dossier `dist/`.
+
+## Tests & Lint
+
+- Linter : `npm run lint` (si configuré)
+- Tests : `npm test` (si des tests sont présents)
+
+## Notes
+
+- Ce README fournit les instructions minimales pour démarrer et build l'application frontale en local.
+- Voir `vite.config.js` pour la configuration Vite et `package.json` pour les scripts disponibles.
