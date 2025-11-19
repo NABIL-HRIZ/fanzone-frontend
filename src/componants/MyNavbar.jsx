@@ -5,18 +5,31 @@ import { AuthContext } from "../auth/AuthContext";
 import { FaBars } from "react-icons/fa";
 import { IoCartOutline } from "react-icons/io5";
 
+import { useDispatch } from "react-redux";
+import { clearCart } from "../redux/CartSlice";
 
+import { useSelector } from "react-redux";
 import '../styles/MyNavbar.css';
 
 function MyNavbar() {
   const { user, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+ const dispatch = useDispatch();
 
 
-  const handleLogout = async () => {
-    const token = localStorage.getItem("token");
-    try {
+   const cartItemsCount = useSelector(state =>
+    state.cart.items.reduce((total, item) => total + item.quantity, 0)
+  );
+
+
+
+
+ const handleLogout = async () => {
+  const token = localStorage.getItem("token");
+
+  try {
+    if (token) {
       await axios.post(
         "http://127.0.0.1:8000/api/logout",
         {},
@@ -24,13 +37,26 @@ function MyNavbar() {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      localStorage.removeItem("token");
-      setUser(null);
-      navigate("/login");
-    } catch (err) {
-      console.error("Erreur logout:", err);
     }
-  };
+
+    
+     localStorage.removeItem("user");
+  localStorage.removeItem("token");
+  localStorage.removeItem("roles");
+    dispatch(clearCart());
+    setUser(null);
+    navigate("/login");
+
+  } catch (err) {
+    console.error("Erreur logout:", err);
+
+    localStorage.removeItem("token");
+    dispatch(clearCart());
+    setUser(null);
+    navigate("/login");
+  }
+};
+
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -57,10 +83,16 @@ function MyNavbar() {
           <Link className="nav-link-modern" to="/faq" onClick={closeDropdown}>
             FAQ
           </Link>
-        <Link className="nav-link-modern cart-link" to="/cart" onClick={closeDropdown}>
-  <IoCartOutline className="cart-icon"/>
-  
-</Link>
+       
+      <Link className="nav-link-modern cart-link" to="/cart" onClick={closeDropdown}>
+        <div className="cart-icon-wrapper">
+          <IoCartOutline className="cart-icon"/>
+
+          {cartItemsCount > 0 && (
+            <span className="cart-badge">{cartItemsCount}</span>
+          )}
+        </div>
+      </Link>
 
 
         </div>
@@ -133,9 +165,9 @@ function MyNavbar() {
                           <div className="menu-item-icon"></div>
                           Mon profil
                         </Link>
-                        <Link to="/user/achats" className="dropdown-item-modern" onClick={closeDropdown}>
+                        <Link to="/mes-réservations" className="dropdown-item-modern" onClick={closeDropdown}>
                           <div className="menu-item-icon"></div>
-                          Mes tickets
+                          Mes réservations
                         </Link>
                         
                         

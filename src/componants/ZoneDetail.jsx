@@ -146,12 +146,12 @@ const ZoneDetail = () => {
             </div>
 
             <div className="action-buttons" style={{backgroundColor:"transparent"}}>
-              <Link to="/user/zonees" className="action-btn secondary-btn">
+              <Link to="/" className="action-btn secondary-btn">
                 <FaArrowLeft className="icon" /> Retour aux zonees
               </Link>
-              <button className="action-btn primary-btn">
+              <Link to={`/reservation/${zone.id}`} className="action-btn primary-btn">
                 Réserver maintenant
-              </button>
+              </Link>
             </div>
           </div>
         </div>

@@ -42,6 +42,13 @@ const ShowZones = () => {
 
   return (
     <div className="zones-container">
+     
+      <div className="headerr-content">
+        <h1> Zones des Matchs du Maroc</h1>
+        <p style={{marginBottom:"-40px"}}>Découvrez toutes les zones disponibles pour suivre et vivre les matchs de l’Équipe Nationale.</p>
+
+
+      </div>
       {zones.length === 0 && (
         <div className="no-zones">
           <p>Aucune zone trouvée</p>

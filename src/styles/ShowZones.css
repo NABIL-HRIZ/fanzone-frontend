@@ -10,7 +10,7 @@
 }
 
 .no-zones p {
-  color: #94a3b8;
+  color: #070707;
   font-size: 1.2rem;
   font-weight: 300;
 }
@@ -28,6 +28,7 @@
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+
 }
 
 .zone-slide:hover {
@@ -38,6 +39,7 @@
   width: 100%;
   height: 100%;
   position: relative;
+
 }
 
 .zone-image-container {

@@ -4,30 +4,40 @@ import axios from "axios";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+    // Initial state from localStorage
+    const savedUser = localStorage.getItem("user");
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (token) {
+    if (token && !user) {
       axios.get("http://127.0.0.1:8000/api/user", {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(res => {
         const userData = res.data?.user || null;
-        try {
-          const roles = JSON.parse(localStorage.getItem('roles')) || null;
-          if (roles && roles.length > 0) {
-            userData.role = userData.role || roles[0];
-          }
-        } catch (e) {}
         setUser(userData);
+        localStorage.setItem("user", JSON.stringify(userData));
       })
       .catch(() => setUser(null));
     }
   }, []);
 
+  const saveUser = (userData) => {
+    setUser(userData);
+    localStorage.setItem("user", JSON.stringify(userData));
+  };
+
+  const logout = () => {
+    setUser(null);
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+  };
+
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ user, setUser: saveUser, logout }}>
       {children}
     </AuthContext.Provider>
   );

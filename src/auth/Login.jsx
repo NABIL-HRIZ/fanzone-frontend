@@ -38,10 +38,9 @@ setUser({
   role: roles[0] || null
 });
 
-// redirection
 if (roles.includes("admin")) {
   navigate("/admin");
-} else if (roles.includes("agent")) { // attention typo "agentr" → "agent"
+} else if (roles.includes("agent")) { 
   navigate("/agent");
 } else {
   navigate("/user");

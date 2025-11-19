@@ -15,6 +15,11 @@ import About from './componants/About';
 import ShowZones from './componants/ShowZones';
 import ShowAllZones from './componants/ShowAllZones';
 import ZoneDetail from './componants/ZoneDetail';
+import CartPage from './componants/CartPage';
+import Matches from './pages/Match/Matches';
+import MatchReservation from './componants/MatchReservation';
+import Success from './componants/Success';
+import ShowReservations from './componants/ShowReservations';
 const App = () => {
   return (
    <>
@@ -35,7 +40,11 @@ const App = () => {
 
                   
         } />
-
+        <Route path='/matches' element={<Matches/>} />
+        <Route path='/reservation/:id' element={<MatchReservation />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/mes-réservations" element={<ShowReservations />} />
         <Route path='/qui-sommes-nous' element={<WhoUs />} />
         <Route path='/faq' element={<Faqs/>} />
         <Route path='/politique' element={<Politiques/>} />
