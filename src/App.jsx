@@ -20,6 +20,7 @@ import Matches from './pages/Match/Matches';
 import MatchReservation from './componants/MatchReservation';
 import Success from './componants/Success';
 import ShowReservations from './componants/ShowReservations';
+import  QRScanner from './componants/QRScanner';
 const App = () => {
   return (
    <>
@@ -51,6 +52,8 @@ const App = () => {
         <Route path='/contact' element={<ContactUs/>} />
 
          <Route path="/zone/:id" element={<ZoneDetail />} />
+
+         <Route path="/agent/add-scan" element={<QRScanner />} />
 
     </Routes>
     <Footer />

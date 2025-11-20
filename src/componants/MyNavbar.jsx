@@ -151,6 +151,11 @@ function MyNavbar() {
                           <div className="menu-item-icon"></div>
                           Mes informations
                         </Link>
+                         <Link to="/agent/add-scan" className="dropdown-item-modern" onClick={closeDropdown}>
+                          <div className="menu-item-icon"></div>
+                          Scanner un ticket 
+                        </Link>
+                        
                         <Link to="/agent/scans" className="dropdown-item-modern" onClick={closeDropdown}>
                           <div className="menu-item-icon"></div>
                           Mes Scans

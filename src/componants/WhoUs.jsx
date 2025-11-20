@@ -1,10 +1,4 @@
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation, Autoplay } from "swiper/modules";
-
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 import "../styles/WhoUs.css";
 
 import fan1 from "../assets/who-us-pic.jpg";
@@ -16,37 +10,20 @@ const WhoUs = () => {
   return (
     <section className="who-us">
       <div className="who-us-container">
-
-        
-        <div className="who-us-image">
-          <Swiper
-            slidesPerView={1}
-            loop={true}
-            spaceBetween={30}
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: false,
-            }}
-            pagination={{
-              clickable: true,
-            }}
-            navigation={true}
-            modules={[Pagination, Navigation, Autoplay]}
-            className="whoUsSwiper"
-          >
-            <SwiperSlide>
-              <img src={fan4} alt="Supporters marocains en fête" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={fan2} alt="Ambiance dans une Fan Zone" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={fan3} alt="Public en célébration" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src={fan1} alt="Match diffusé sur écran géant" />
-            </SwiperSlide>
-          </Swiper>
+        {/* Grid d'images */}
+        <div className="parent">
+          <div className="div1">
+            <img src={fan1} alt="Fan Zone 1" className="grid-image" />
+          </div>
+          <div className="div2">
+            <img src={fan2} alt="Fan Zone 2" className="grid-image" />
+          </div>
+          <div className="div3">
+            <img src={fan3} alt="Fan Zone 3" className="grid-image" />
+          </div>
+          <div className="div4">
+            <img src={fan4} alt="Fan Zone 4" className="grid-image" />
+          </div>
         </div>
 
         <div className="who-us-content">
@@ -56,10 +33,10 @@ const WhoUs = () => {
           </h3>
 
           <p className="who-us-description">
-            <strong>Fan Zon</strong> est la plateforme officielle dédiée à la{" "}
+            <strong>Fan Zone</strong> est la plateforme officielle dédiée à la{" "}
             <span>CAN Maroc 2025</span>, rassemblant tous les amoureux du football
-            autour d’un même objectif :{" "}
-            <em>vivre l’émotion du jeu ensemble</em>.
+            autour d'un même objectif :{" "}
+            <em>vivre l'émotion du jeu ensemble</em>.
           </p>
 
           <p className="who-us-description">
@@ -85,7 +62,6 @@ const WhoUs = () => {
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

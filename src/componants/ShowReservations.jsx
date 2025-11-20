@@ -61,7 +61,6 @@ const ShowReservations = () => {
       window.URL.revokeObjectURL(url);
     } catch (err) {
       console.error('Error downloading ticket:', err);
-      // If backend redirected to login (HTML), show a friendly message
       alert('Impossible de télécharger le ticket. Veuillez vous reconnecter et réessayer.');
     }
   })();
