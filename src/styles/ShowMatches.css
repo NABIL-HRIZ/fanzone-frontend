@@ -1,0 +1,272 @@
+.show-matches-container {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: #f8fafc;
+
+}
+
+.show-matches-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 12px;
+  color: rgb(12, 12, 12);
+}
+
+.show-matches-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.header-stats {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.total-matches {
+  text-align: center;
+  padding: 15px 25px;
+  background: rgba(138, 137, 137, 0.2);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+}
+
+.total-matches p {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.total-matches .number {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.add-match-btn {
+  background:green;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
+
+.matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.match-card {
+  background: white !important;
+  border-radius: 12px;
+  padding: 25px;
+  transition: all 0.3s ease;
+  border: 1px solid #e9ecef;
+}
+
+
+
+.match-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.match-status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.match-status.upcoming {
+  background: #d4edda;
+  color: #155724;
+}
+
+.match-status.completed {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.match-date {
+  font-size: 14px;
+  color: #6c757d;
+  font-weight: 500;
+  text-align: right;
+}
+
+.teams-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.team-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background:green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.team-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.team-name {
+  font-weight: 600;
+  text-align: center;
+  font-size: 14px;
+  color: #495057;
+}
+
+.vs-separator {
+  padding: 0 15px;
+}
+
+.vs-separator span {
+  background: #6c757d;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+
+
+.match-description {
+  color: #6c757d;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.zones-info {
+  margin-top: 10px;
+}
+
+.zones-count {
+  background: #e7f3ff;
+  color: #0066cc;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.match-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.edit-btn {
+  background: #814706;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+.delete-btn {
+  background: #c71c1c;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+
+
+
+@media (max-width: 768px) {
+  .show-matches-header {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .header-stats {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .matches-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .match-card {
+    padding: 20px;
+  }
+  
+  .teams-section {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .vs-separator {
+    padding: 10px 0;
+  }
+  
+  .match-actions {
+    flex-direction: column;
+  }
+  
+  .edit-btn,
+  .delete-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .show-matches-container {
+    padding: 10px;
+  }
+  
+  .match-card {
+    padding: 15px;
+  }
+}
