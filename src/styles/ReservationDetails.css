@@ -1,0 +1,228 @@
+.reservation-details-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #e9ecef;
+}
+
+.details-header {
+  background:green;
+  padding: 25px 30px;
+  border-radius: 15px;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.details-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+}
+
+
+
+.reservation-id {
+  font-size: 16px;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.details-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.detailss-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 25px;
+}
+
+.detail-cardd {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid #e9ecef;
+}
+
+
+.cardd-header {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 20px 25px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.cardd-header h3 {
+  margin: 0;
+  color: #495057;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.cardd-content {
+  padding: 25px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f8f9fa;
+}
+
+
+
+.status-badge {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+
+
+
+.tickets-count {
+  background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.price-amount {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.code-text {
+  font-family: 'Courier New', monospace;
+  background: #f8f9fa;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #495057;
+}
+
+.actions-section {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+}
+
+.actions-cardd h3 {
+  margin: 0 0 20px 0;
+  color: #495057;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+
+
+
+.print-btn {
+  background:green;
+  color: white;
+}
+
+
+
+
+@media (max-width: 768px) {
+  .reservation-details-container {
+    padding: 15px;
+  }
+
+  .details-header {
+    padding: 20px;
+  }
+
+  .header-content {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-cardd {
+    margin-bottom: 20px;
+  }
+
+  .info-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .info-item span {
+    text-align: left;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .reservation-details-container {
+    padding: 10px;
+  }
+
+  .details-header h1 {
+    font-size: 24px;
+  }
+
+  .cardd-content {
+    padding: 20px;
+  }
+
+  .info-item {
+    padding: 10px 0;
+  }
+}

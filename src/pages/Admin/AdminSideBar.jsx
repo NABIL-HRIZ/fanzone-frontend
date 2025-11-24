@@ -22,6 +22,8 @@ const AdminSideBar = () => {
     { path: "/admin/users", icon: FaUsers, label: "Afficher Users" },
     { path: "/admin/users/add", icon: FaPlus, label: "Ajouter User" },
     { path: "/admin/matches", icon: FaFutbol, label: "Matches" },
+    { path: "/admin/matches/add", icon: FaFutbol, label: "Ajouter Matches" },
+
     { path: "/admin/reservations", icon: FaTicketAlt, label: "Réservations" },
   ];
 

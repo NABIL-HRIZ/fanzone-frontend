@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import '../../styles/AddMatch.css';
+import { useNavigate, useParams } from 'react-router-dom';
+import '../../styles/UpdateMatch.css';
 
-const AddMatch = () => {
+const UpdateMatch = () => {
   const navigate = useNavigate();
+  const { id } = useParams(); 
   const [formData, setFormData] = useState({
     team_one_title: '',
     team_one_image: '',
@@ -15,6 +16,40 @@ const AddMatch = () => {
     description: ''
   });
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchMatch = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await axios.get(
+          `http://127.0.0.1:8000/api/match-details/${id}`,
+          {
+            headers: {
+              Accept: "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        const match = response.data;
+        setFormData({
+          team_one_title: match.team_one_title || '',
+          team_one_image: match.team_one_image || '',
+          team_two_title: match.team_two_title || '',
+          team_two_image: match.team_two_image || '',
+          match_date: match.match_date ? match.match_date.slice(0, 16) : '',
+          stadium: match.stadium || '',
+          description: match.description || ''
+        });
+        
+      } catch (error) {
+        console.error("Erreur lors du chargement du match:", error);
+        alert("Erreur lors du chargement du match");
+      } 
+    };
+
+    fetchMatch();
+  }, [id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,8 +66,8 @@ const AddMatch = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/add-match",
+      const response = await axios.put(
+        `http://127.0.0.1:8000/api/match/${id}`,
         formData,
         {
           headers: {
@@ -42,21 +77,23 @@ const AddMatch = () => {
         }
       );
 
-      alert('Match ajouté avec succès!');
-      navigate('/admin/matches'); 
+      alert('Match modifié avec succès!');
+      navigate('/admin/matches');
       
     } catch (error) {
-      console.error("Erreur lors de l'ajout du match:", error);
-      alert("Erreur lors de l'ajout du match");
+      console.error("Erreur lors de la modification du match:", error);
+      alert("Erreur lors de la modification du match");
     } finally {
       setLoading(false);
     }
   };
 
+
+
   return (
-    <div className="add-match-container">
-      <div className="add-match-header">
-        <h1>Ajouter un Match</h1>
+    <div className="update-match-container">
+      <div className="update-match-header">
+        <h1>Modifier le Match</h1>
         <button 
           onClick={() => navigate('/admin/matches')} 
           className="back-btn"
@@ -65,7 +102,7 @@ const AddMatch = () => {
         </button>
       </div>
 
-      <div className="add-match-card">
+      <div className="update-match-card">
         <form onSubmit={handleSubmit} className="match-form">
           
           <div className="form-group">
@@ -148,13 +185,12 @@ const AddMatch = () => {
           </div>
 
           <div className="form-buttons">
-          
+        
             <button 
               type="submit" 
-             
               className="submit-btn"
             >
-             Ajouter le Match
+              Modifier le Match
             </button>
           </div>
         </form>
@@ -163,4 +199,4 @@ const AddMatch = () => {
   );
 };
 
-export default AddMatch;
+export default UpdateMatch;

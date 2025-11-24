@@ -29,6 +29,9 @@ import AddFan from './pages/Admin/AddFan';
 import UpdateUser from './pages/Admin/UpdateUser';
 import ShowMatches from './pages/Admin/ShowMatches';
 import AddMatch from './pages/Admin/AddMatch';
+import UpdateMatch from './pages/Admin/UpdateMatch';
+import AdminShowReservations from './pages/Admin/AdminShowReservations';
+import ReservationDetails from './pages/Admin/ReservationDetails';
 
 const App = () => {
   return (
@@ -45,6 +48,12 @@ const App = () => {
           <Route path="users/edit/:id" element={<UpdateUser/>} />  
           <Route path="matches" element={<ShowMatches />} />  
           <Route path="matches/add" element={<AddMatch/>} />  
+          <Route path="matches/edit/:id" element={<UpdateMatch/>} />  
+          <Route path="reservations" element={<AdminShowReservations/>} />  
+          <Route path="reservation/:id" element={<ReservationDetails/>} />  
+
+
+
 
 
           

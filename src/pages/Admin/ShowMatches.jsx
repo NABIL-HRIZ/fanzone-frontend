@@ -124,10 +124,7 @@ const ShowMatches = () => {
                       <img 
                         src={`http://127.0.0.1:8000/storage/${match.team_one_image}`}
                         alt={match.team_one_title}
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                          e.target.nextSibling.style.display = 'flex';
-                        }}
+                        
                       />
                     ) : null}
                   
@@ -145,10 +142,7 @@ const ShowMatches = () => {
                       <img 
                        src={`http://127.0.0.1:8000/storage/${match.team_two_image}`}
                         alt={match.team_two_title}
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                          e.target.nextSibling.style.display = 'flex';
-                        }}
+                       
                       />
                     ) : null}
                    

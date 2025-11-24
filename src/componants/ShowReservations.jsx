@@ -9,7 +9,7 @@ const ShowReservations = () => {
   const [reservations, setReservations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [activeFilter, setActiveFilter] = useState('all');
+ 
 
   useEffect(() => {
     const fetchReservations = async () => {
@@ -246,7 +246,7 @@ const ShowReservations = () => {
           <h3>Aucune réservation trouvée</h3>
           <p>Aucune réservation ne correspond à votre filtre actuel.</p>
           <button 
-            onClick={() => setActiveFilter('all')} 
+            
             className="clear-filter-btn"
           >
             Voir toutes les réservations
