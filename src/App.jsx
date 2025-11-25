@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './styles/Button.css'
 import AdminDashboard from './pages/Admin/AdminDashboard';
 import AdminContent from './pages/Admin/AdminContent';
 import AdminZones from './pages/Admin/AdminZones';
@@ -32,6 +33,7 @@ import AddMatch from './pages/Admin/AddMatch';
 import UpdateMatch from './pages/Admin/UpdateMatch';
 import AdminShowReservations from './pages/Admin/AdminShowReservations';
 import ReservationDetails from './pages/Admin/ReservationDetails';
+import Profile from './componants/Profile';
 
 const App = () => {
   return (
@@ -79,6 +81,8 @@ const App = () => {
                     <Subscibes />
                   </>
                 } />
+                <Route path="/profile" element={<Profile />} />
+
                 <Route path='/matches' element={<Matches />} />
                 <Route path='/reservation/:id' element={<MatchReservation />} />
                 <Route path="/cart" element={<CartPage />} />

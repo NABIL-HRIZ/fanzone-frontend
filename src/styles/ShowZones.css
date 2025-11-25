@@ -72,8 +72,8 @@
   left: 0;
   right: 0;
   padding: 30px;
-  color: rgb(250, 248, 248);
-  background-color: #dfdddd;
+  color: rgb(250, 248, 248) !important;
+  background-color: #dfdddd ;
   transition: all 0.3s ease;
 
 }
@@ -123,7 +123,7 @@
 
 .hover-content {
   text-align: center;
-  color: white;
+  color: white !important;
   width: 100%;
 }
 
@@ -141,7 +141,7 @@
   text-transform: uppercase;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #000;
+  color: #ffffffe8 !important;
 }
 
 .match-title {
@@ -149,7 +149,7 @@
   font-weight: 700;
   margin: 15px 0 0 0;
   line-height: 1.3;
-  color: #000;
+  color: #fcfafa;
 }
 
 .match-time {
@@ -158,7 +158,7 @@
   justify-content: center;
   gap: 8px;
   font-size: 0.9rem;
-  color: #4e4f4f;
+  color: #fdfdfd !important;
   margin-bottom: 25px;
   font-weight: 500;
 }
@@ -184,18 +184,18 @@
   font-weight: 600;
   font-size: 1rem;
   text-align: center;
-  color: #232323;
+  color: #f7f5f5 !important;
 }
 
-.vs {
+.vss {
   font-weight: 800;
-  color: #780d0d;
-  font-size: 0.9rem;
+  color: #f4f1ed !important;
+  font-size:2rem;
   padding: 0 10px;
 }
 
 .book-button {
-  background: linear-gradient(135deg, #f1f5f9 0%, #b8eab8 100%);
+  background:rgb(204, 236, 204);
   color: #1e293b;
   border: none;
   padding: 14px 32px;
@@ -212,20 +212,7 @@
   letter-spacing: 0.5px;
 }
 
-.book-button:hover {
-  transform: translateY(-2px);
-}
 
-.book-button.disabled {
-  background: rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.7);
-  cursor: not-allowed;
-}
-
-.book-button.disabled:hover {
-  transform: none;
-  box-shadow: none;
-}
 
 .no-match h4 {
   margin: 0 0 10px 0;
@@ -238,7 +225,6 @@
   font-size: 0.9rem;
 }
 
-/* Swiper Pagination Customization */
 .swiper-pagination-bullet {
   background: #64748b;
   opacity: 0.6;
@@ -248,13 +234,24 @@
 }
 
 .swiper-pagination-bullet-active {
-  background: #6366f1;
+  background: #04692b;
   opacity: 1;
   width: 20px;
   border-radius: 8px;
 }
 
-/* Responsive Design */
+
+.pricee-badge {
+  background-color: #9fce95;
+  color: #151515;
+  padding: 5px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  display: inline-block;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  margin-left: 210px;
+}
 @media (max-width: 768px) {
   .zones-container {
     padding: 40px 15px;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/Register.css';
-
+import Swal from 'sweetalert2';
 const Register = () => {
   const [formData, setFormData] = useState({
     first_name: '',
@@ -12,9 +12,7 @@ const Register = () => {
     password_confirmation: ''
   });
 
-  const [errors, setErrors] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState('');
+
 
   const handleChange = (e) => {
     setFormData({
@@ -25,7 +23,6 @@ const Register = () => {
   };
 
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -33,7 +30,11 @@ const Register = () => {
       const response = await axios.post('http://127.0.0.1:8000/api/register', formData);
       
       if (response.data) {
-        setSuccessMessage('Inscription réussie');
+      
+        Swal.fire({
+  title: "Inscription réussie!",
+  icon: "success"
+});
       
         setTimeout(() => {
           window.location.href = '/login';
@@ -41,7 +42,12 @@ const Register = () => {
       }
     } catch (error) {
      
-        setErrors({ general: 'Une erreur est survenue. Veuillez réessayer.' });
+       Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: error.response?.data?.message || "Une erreur est survenue",
+  
+});
       
     } finally {
       setIsLoading(false);
@@ -56,17 +62,8 @@ const Register = () => {
           <p>Créez votre compte pour découvrir des événements exceptionnels</p>
         </div>
 
-        {successMessage && (
-          <div className="success-message">
-            {successMessage}
-          </div>
-        )}
-
-        {errors.general && (
-          <div className="error-message">
-            {errors.general}
-          </div>
-        )}
+       
+      
 
         <form onSubmit={handleSubmit} className="register-form">
           <div className="form-row">
@@ -78,10 +75,8 @@ const Register = () => {
                 name="first_name"
                 value={formData.first_name}
                 onChange={handleChange}
-                className={errors.first_name ? 'error' : ''}
                 placeholder="Votre prénom"
               />
-              {errors.first_name && <span className="error-text">{errors.first_name}</span>}
             </div>
 
             <div className="form-group">
@@ -92,10 +87,8 @@ const Register = () => {
                 name="last_name"
                 value={formData.last_name}
                 onChange={handleChange}
-                className={errors.last_name ? 'error' : ''}
                 placeholder="Votre nom"
               />
-              {errors.last_name && <span className="error-text">{errors.last_name}</span>}
             </div>
           </div>
 
@@ -107,10 +100,8 @@ const Register = () => {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className={errors.phone ? 'error' : ''}
               placeholder="Votre numéro de téléphone"
             />
-            {errors.phone && <span className="error-text">{errors.phone}</span>}
           </div>
 
           <div className="form-group">
@@ -121,10 +112,8 @@ const Register = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className={errors.email ? 'error' : ''}
               placeholder="votre@email.com"
             />
-            {errors.email && <span className="error-text">{errors.email}</span>}
           </div>
 
           <div className="form-row">
@@ -136,10 +125,8 @@ const Register = () => {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className={errors.password ? 'error' : ''}
                 placeholder="Minimum 6 caractères"
               />
-              {errors.password && <span className="error-text">{errors.password}</span>}
             </div>
 
             <div className="form-group">
@@ -150,21 +137,30 @@ const Register = () => {
                 name="password_confirmation"
                 value={formData.password_confirmation}
                 onChange={handleChange}
-                className={errors.password_confirmation ? 'error' : ''}
                 placeholder="Confirmez votre mot de passe"
               />
-              {errors.password_confirmation && (
-                <span className="error-text">{errors.password_confirmation}</span>
-              )}
+           
             </div>
           </div>
 
-          <button 
-            type="submit" 
-            className={`submit-btn ${isLoading ? 'loading' : ''}`}
-            disabled={isLoading}
-          >
-            {isLoading ? 'Inscription en cours...' : 'Créer mon compte'}
+          <button className='button' style={{marginLeft:"120px"}}>
+  <div class="svg-wrapper-1">
+    <div class="svg-wrapper">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+      >
+        <path fill="none" d="M0 0h24v24H0z"></path>
+        <path
+          fill="currentColor"
+          d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+        ></path>
+      </svg>
+    </div>
+  </div>
+  <span>Créer un compte</span>
           </button>
         </form>
 

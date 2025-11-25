@@ -1,20 +1,28 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/Subscribe.css';
-
+import Swal from 'sweetalert2'
 const Subscibes = () => {
   const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:8000/api/add-email', { email });
       setMessage(response.data.message); 
+      Swal.fire({
+  title: "Email Envoyée !",
+  icon: "success"
+});
       setEmail('');
     } catch (error) {
       console.error(error);
-      setMessage(error.response?.data?.message || 'Erreur, réessayez.');
+      Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: "Email déja enregistrer ",
+  
+});
     }
   };
 
@@ -44,7 +52,6 @@ const Subscibes = () => {
             </div>
           </form>
 
-          {message && <p className="message">{message}</p>}
         </div>
       </div>
     </section>

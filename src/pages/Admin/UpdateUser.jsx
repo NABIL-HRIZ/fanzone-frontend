@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import '../../styles/UpdateUser.css'
 
 
@@ -73,6 +74,11 @@ const UpdateUser = () => {
     setLoading(true);
 
     const submitData = { ...formData };
+
+      if (!submitData.password) {
+    delete submitData.password;
+    delete submitData.password_confirmation;
+  }
    
 
     try {
@@ -89,7 +95,10 @@ const UpdateUser = () => {
         }
       );
 
-      alert(response.data.message || 'Utilisateur modifié avec succès!');
+      await Swal.fire({
+  title: "Utilisateur modifié avec succès!",
+  icon: "success"
+});
       navigate('/admin/users'); 
       
     } catch (error) {

@@ -120,11 +120,11 @@
   padding-top: 1.5rem;
 }
 
-.submit-btn {
-  background: linear-gradient(45deg, #C1272D, #006233);
+.submitt-btn {
+  background:rgb(134, 223, 134);
   border: none;
-  color: white;
-  padding: 1.5rem 2rem;
+  color: rgb(32, 31, 31);
+  padding: 1rem 2rem;
   border-radius: 16px;
   font-size: 1.2rem;
   font-weight: 700;
@@ -139,89 +139,8 @@
   margin-top: 1rem;
 }
 
-.submit-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s ease;
-}
 
 
-
-.submit-btn:active {
-  transform: translateY(-1px);
-}
-
-.submit-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.submit-btn.loading {
-  background: linear-gradient(45deg, #666, #888);
-  color: transparent;
-}
-
-.spinner {
-  width: 20px;
-  height: 20px;
-  border: 2px solid transparent;
-  border-top: 2px solid white;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.contact-header {
-  animation: fadeInUp 0.6s ease;
-}
-
-.contact-content {
-  animation: fadeInUp 0.6s ease 0.2s both;
-}
-
-.form-group {
-  animation: fadeInUp 0.6s ease both;
-}
-
-.form-group:nth-child(1) { animation-delay: 0.3s; }
-.form-group:nth-child(2) { animation-delay: 0.4s; }
-.form-group:nth-child(3) { animation-delay: 0.5s; }
-.submit-btn { animation: fadeInUp 0.6s ease 0.6s both; }
-
-/* Effet de validation */
-.form-input:valid:not(:focus),
-.form-textarea:valid:not(:focus) {
-  border-color: rgba(0, 98, 51, 0.5);
-}
-
-.form-input:invalid:not(:focus):not(:placeholder-shown),
-.form-textarea:invalid:not(:focus):not(:placeholder-shown) {
-  border-color: rgba(192, 39, 45, 0.5);
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
   .contact-us-container {
     padding: 2rem 1rem;

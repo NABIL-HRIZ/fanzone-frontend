@@ -12,24 +12,6 @@ const ContactUs = () => {
   });
   const [loading, setLoading] = useState(false);
 
-  const Toast = Swal.mixin({
-    toast: true,
-    position: "top-end",
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    background: "#ffffff",
-    color: "#2c2b2b",
-    iconColor: "#006233", 
-    timerProgressBarColor: "#006233",
-    customClass: {
-      popup: 'custom-swal-popup'
-    },
-    didOpen: (toast) => {
-      toast.addEventListener("mouseenter", Swal.stopTimer);
-      toast.addEventListener("mouseleave", Swal.resumeTimer);
-    },
-  });
 
   const handleChange = (e) => {
     setFormData({
@@ -49,7 +31,7 @@ const ContactUs = () => {
       );
 
       if (data.success) {
-        Toast.fire({
+        Swal.fire({
           icon: "success",
           title: "Message envoyé avec succès !",
           iconColor: "#006233", 
@@ -60,15 +42,6 @@ const ContactUs = () => {
           icon: "error",
           title: "Erreur",
           text: "Erreur lors de l'envoi du message.",
-          background: "#ffffff",
-          color: "#2c2b2b",
-          confirmButtonColor: "#C1272D", 
-          confirmButtonText: "OK",
-          iconColor: "#C1272D", 
-          customClass: {
-            popup: 'custom-swal-popup',
-            confirmButton: 'custom-swal-confirm-btn'
-          }
         });
       }
     } catch (error) {
@@ -77,15 +50,7 @@ const ContactUs = () => {
         icon: "error",
         title: "Erreur serveur",
         text: "Erreur serveur, réessayez plus tard.",
-        background: "#ffffff",
-        color: "#2c2b2b",
-        confirmButtonColor: "#C1272D", 
-        confirmButtonText: "OK",
-        iconColor: "#C1272D",
-        customClass: {
-          popup: 'custom-swal-popup',
-          confirmButton: 'custom-swal-confirm-btn'
-        }
+      
       });
     } finally {
       setLoading(false);
@@ -147,7 +112,7 @@ const ContactUs = () => {
 
               <button
                 type="submit"
-                className='submit-btn'
+                className='submitt-btn'
                 
               >
               

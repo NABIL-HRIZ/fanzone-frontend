@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { addToCart } from '../redux/CartSlice';
 import '../styles/MatchReservation.css';
 import { FaLocationDot } from "react-icons/fa6";
+import Swal from 'sweetalert2'
 const MatchReservation = () => {
   const { id } = useParams();
   const [zone, setZone] = useState(null);
@@ -38,6 +39,11 @@ const MatchReservation = () => {
         city: zone.city,
         available_seats: zone.available_seats
       }));
+      Swal.fire({
+  title: "Réservation Ajouted !",
+  text: "Go check ur cart ",
+  icon: "success"
+});
     }
   };
 

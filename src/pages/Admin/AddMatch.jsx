@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/AddMatch.css';
-
+import Swal from 'sweetalert2';
 const AddMatch = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -16,42 +16,52 @@ const AddMatch = () => {
   });
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+  
+  const handleChange=(e)=>{
+    setFormData({
+      ...formData,
+      [e.target.name]:e.target.value
+    })
+  }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
 
-    try {
-      const token = localStorage.getItem("token");
+  try {
+    const token = localStorage.getItem("token");
 
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/add-match",
-        formData,
-        {
-          headers: {
-            Accept: "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+    const response = await axios.post(
+      "http://127.0.0.1:8000/api/add-match",
+      formData,
+      {
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    if (response.data) {
+      await Swal.fire({
+        icon: "success",
+        title: "Match ajouté",
+        text: "Le match a été ajouté avec succès !",
+      });
 
-      alert('Match ajouté avec succès!');
-      navigate('/admin/matches'); 
-      
-    } catch (error) {
-      console.error("Erreur lors de l'ajout du match:", error);
-      alert("Erreur lors de l'ajout du match");
-    } finally {
-      setLoading(false);
+      navigate("/admin/matches"); 
     }
-  };
+
+  } catch (error) {
+    Swal.fire({
+      icon: "error",
+      title: "Erreur !",
+      text: error.response?.data?.message || "Erreur lors de l'ajout du match.",
+    });
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="add-match-container">

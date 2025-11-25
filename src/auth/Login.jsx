@@ -26,9 +26,7 @@ const Login = () => {
       const response = await axios.post("http://127.0.0.1:8000/api/login", formData);
 
 
-    
-
-      const userData = response.data.user;
+ const userData = response.data.user;
 const token = response.data.token;
 const roles = response.data.role; 
 
@@ -44,40 +42,20 @@ setUser({
 if (roles.includes("admin")) {
   navigate("/admin");
 } else if (roles.includes("agent")) { 
-  navigate("/agent");
+  navigate("/");
 } else {
-  navigate("/user");
+  navigate("/");
 }
     } catch (error) {
       
-        setErrors({ general: "Une erreur est survenue. Veuillez réessayer." });
+        setErrors({ error: "Une erreur est survenue. Veuillez réessayer." });
       
     } finally {
       setIsLoading(false);
     }
   };
 
-  
- useEffect(() => {
-  const token = localStorage.getItem("token");
-  if (!token) return;
 
-  axios.get("http://127.0.0.1:8000/api/user", { headers: { Authorization: `Bearer ${token}` } })
-    .then(res => {
-      if (!res.data.success) {
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
-        setUser(null);
-      } else {
-        setUser(res.data.user);
-      }
-    })
-    .catch(() => {
-      localStorage.removeItem("token");
-      localStorage.removeItem("user");
-      setUser(null);
-    });
-}, []);
 
 
   return (
@@ -85,10 +63,10 @@ if (roles.includes("admin")) {
       <div className="login-card">
         <div className="login-header">
           <h2>Content de vous revoir !</h2>
-          <p>Connectez-vous à votre compte Eventify</p>
+          <p>Connectez-vous à votre compte FANZONE</p>
         </div>
 
-        {errors.general && <div className="error-message">{errors.general}</div>}
+        {errors.error && <div className="error-message">{errors.error}</div>}
 
         <form onSubmit={handleSubmit} className="login-form">
           <div className="form-group">
@@ -122,9 +100,25 @@ if (roles.includes("admin")) {
             <a href="/forgot-password" className="forgot-password">Mot de passe oublié ?</a>
           </div>
 
-          <button type="submit" className={`submit-btn`}>
-            Se connecter 
-          </button>
+          <button className='button' style={{marginLeft:"70px"}}>
+  <div class="svg-wrapper-1">
+    <div class="svg-wrapper">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+      >
+        <path fill="none" d="M0 0h24v24H0z"></path>
+        <path
+          fill="currentColor"
+          d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+        ></path>
+      </svg>
+    </div>
+  </div>
+  <span>Se Connecter</span>
+           </button>
         </form>
 
         <div className="login-footer">

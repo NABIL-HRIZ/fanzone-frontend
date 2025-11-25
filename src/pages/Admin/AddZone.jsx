@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import Swal from 'sweetalert2';
 
 
 const AddZone = () => {
   const navigate = useNavigate();
   const [matches, setMatches] = useState([]);
+  const [loading,setLoading]=useState(false)
   const [zone, setZone] = useState({
     matche_id: '',
     name: '',
@@ -20,7 +21,7 @@ const AddZone = () => {
     description: '',
     image: ''
   });
-  const [message, setMessage] = useState('');
+ 
 
   useEffect(() => {
     const fetchMatches = async () => {
@@ -29,23 +30,25 @@ const AddZone = () => {
         setMatches(res.data.data);
       } catch (error) {
         console.error('Erreur fetching matches:', error);
-        setMessage('Erreur lors du chargement des matches');
+        
       }
     };
     fetchMatches();
   }, []);
 
 
-  const handleChange = (e) => {
-  const { name, value } = e.target;
-  setZone(prev => ({ ...prev, [name]: value }));
-};
+ const handleChange=(e)=>{
+  setZone({
+    ...zone,
+    [e.target.name]:e.target.value
+  });
+ }
 
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage('');
+    
 
     try {
       const token = localStorage.getItem('token');
@@ -59,12 +62,18 @@ const AddZone = () => {
           'Content-Type': 'application/json'
         }
       });
-      
-      setMessage('Zone ajoutée avec succès !');
+      Swal.fire({
+  title: "Zone ajoutée avec succès !",
+  icon: "success"
+});
       setTimeout(() => navigate('/admin/zones'), 2000);
     } catch (error) {
-      console.error(error);
-      setMessage('Erreur lors de l\'ajout de la zone');
+   
+      Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: "Erreur lors de l'ajout de la zone !",
+});
     } finally {
       setLoading(false);
     }
@@ -77,12 +86,7 @@ const AddZone = () => {
         <p>Créez une nouvelle zone de fan pour un match</p>
       </div>
 
-      {message && (
-        <div className={`message ${message.includes('succès') ? 'success' : 'error'}`}>
-          {message}
-        </div>
-      )}
-
+     
       <form onSubmit={handleSubmit} className="zone-form">
         <div className="form-grid">
           <div className="form-section">

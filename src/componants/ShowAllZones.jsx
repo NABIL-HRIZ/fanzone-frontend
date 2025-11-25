@@ -16,9 +16,9 @@ const ShowAllZones = () => {
     try {
       const res = await axios.get(`http://127.0.0.1:8000/api/show-zones?page=${page}`);
 
-      setZones(res.data.data || []);
-      setCurrentPage(res.data.current_page || 1);
-      setLastPage(res.data.last_page || 1);
+      setZones(res.data.data);
+      setCurrentPage(res.data.current_page);
+      setLastPage(res.data.last_page);
 
     } catch (err) {
       console.error('Erreur fetching zones:', err);
@@ -32,16 +32,6 @@ const ShowAllZones = () => {
     fetchZones();
   }, []);
 
-  const formatDate = (dateString) => {
-    if (!dateString) return "Pas de date";
-    return new Date(dateString).toLocaleDateString('fr-FR', {
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
-  };
 
   const goToPage = (page) => {
     if (page >= 1 && page <= lastPage) {
@@ -74,10 +64,7 @@ const ShowAllZones = () => {
                 <img
                   src={`http://127.0.0.1:8000/storage/${zone.image}`}
                   alt={zone.name}
-                  onError={(e) => {
-                    e.target.src =
-                      'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=500&q=80';
-                  }}
+                
                 />
               </div>
 
@@ -87,13 +74,18 @@ const ShowAllZones = () => {
                 <div className="detail-item">
                   <span className="detail-icon"><MdDateRange /></span>
                   <span className="detail-value">
-                    {zone.match ? formatDate(zone.match.match_date) : "Aucun match prévu"}
+                    {new Date (zone.match.match_date).toLocaleString()}
                   </span>
                 </div>
 
                 <div className="detail-item">
                   <span className="detail-icon"><IoLocationOutline /></span>
-                  <span className="detail-value">{zone.city || "Adresse non fournie"}</span>
+                  <span className="detail-value">{zone.city}</span>
+                </div>
+
+                <div className="detail-item">
+                  <span className="detail-icon"><IoLocationOutline /></span>
+                  <span className="detail-value">{zone.match.team_one_title} VC {zone.match.team_two_title}</span>
                 </div>
 
               </div>

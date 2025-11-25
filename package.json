@@ -10,10 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@reduxjs/toolkit": "^2.10.1",
     "aos": "^2.3.4",
     "axios": "^1.13.2",
     "bootstrap": "^5.3.8",
+    "gsap": "^3.13.0",
     "jsqr": "^1.4.0",
     "react": "^19.1.1",
     "react-bootstrap": "^2.10.10",

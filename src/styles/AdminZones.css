@@ -132,7 +132,7 @@
   gap: 0.5rem;
 }
 
-.edit-btn, .delete-btn {
+.editt-btn, .delete-btn {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 8px;
@@ -146,7 +146,7 @@
   justify-content: center;
 }
 
-.edit-btn {
+.editt-btn {
   background: #916308;
   color: white;
 }
@@ -225,7 +225,7 @@
     flex-direction: column;
   }
   
-  .edit-btn, .delete-btn {
+  .editt-btn, .delete-btn {
     padding: 0.75rem;
     font-size: 0.75rem;
   }

@@ -58,51 +58,7 @@
   opacity: 0.5;
 }
 
-.floating-shapes {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
 
-.shape {
-  position: absolute;
-  border-radius: 50%;
-  background: linear-gradient(45deg, rgba(59, 130, 246, 0.1), rgba(236, 72, 153, 0.05));
-  animation: float 8s ease-in-out infinite;
-}
-
-.shape-1 {
-  width: 300px;
-  height: 300px;
-  top: -150px;
-  right: -150px;
-  animation-delay: 0s;
-}
-
-.shape-2 {
-  width: 200px;
-  height: 200px;
-  bottom: -100px;
-  left: 10%;
-  animation-delay: 2s;
-}
-
-.shape-3 {
-  width: 150px;
-  height: 150px;
-  top: 20%;
-  left: -75px;
-  animation-delay: 4s;
-}
-
-@keyframes float {
-  0%, 100% { 
-    transform: translateY(0px) rotate(0deg) scale(1); 
-  }
-  50% { 
-    transform: translateY(-30px) rotate(180deg) scale(1.1); 
-  }
-}
 
 .hero-content {
   position: relative;
@@ -135,20 +91,20 @@
   letter-spacing: 0.5px;
 }
 
-.hero-title {
+.hero-ttitle {
   font-size: 3.5rem;
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 1.5rem;
 }
 
-.title-line {
+.ttitle-line {
   display: block;
-  color: #1c1c1c;
+  color: #f6f3f3;
   margin-bottom: 0.5rem;
 }
 
-.title-accent {
+.ttitle-accent {
   display: block;
   background: linear-gradient(135deg, #bf0e0e 0%, #348d04 50%);
   -webkit-background-clip: text;
@@ -157,7 +113,7 @@
   position: relative;
 }
 
-.title-accent::after {
+.ttitle-accent::after {
   content: '';
   position: absolute;
   bottom: -5px;
@@ -168,9 +124,9 @@
   border-radius: 2px;
 }
 
-.hero-subtitle {
+.hero-subttitle {
   font-size: 1.2rem;
-  color: #38393a;
+  color: #e0e2e3;
   margin-bottom: 3rem;
   line-height: 1.6;
   opacity: 0.9;
@@ -188,11 +144,11 @@
   align-items: center;
   gap: 1rem;
   font-size: 1rem;
-  color: #272727;
+  color: #d6d4d4;
 }
 
 .feature-icon {
-  font-size: 1.2rem;
+  font-size:1.5rem;
   width: 30px;
   text-align: center;
 }
@@ -240,13 +196,15 @@
 }
 
 
-.card-header {
+.carddd-header {
   text-align: center;
   margin-bottom: 2rem;
+  background-color:transparent;
+
 }
 
-.match-badge {
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+.mattch-badge {
+  background:rgb(128, 100, 6);
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -256,8 +214,8 @@
   margin-bottom: 0.5rem;
 }
 
-.match-date {
-  color: #434445;
+.mattch-date {
+  color: #fefeff !important;
   font-weight: 600;
   font-size: 0.9rem;
 }
@@ -266,7 +224,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .team {
@@ -293,22 +251,6 @@
   object-fit: cover;
 }
 
-.logo-fallback {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #790808 0%, #7b2b03 100%);
-  color: white;
-  font-weight: 700;
-  font-size: 1.2rem;
-  border-radius: 50%;
-}
-
-.away-team .logo-fallback {
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-}
 
 .team-name {
   font-size: 0.9rem;
@@ -317,23 +259,9 @@
   text-align: center;
 }
 
-.vs-section {
-  padding: 0 1rem;
-}
 
-.vs-circle {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: #a52812;
-  border: 2px solid rgba(96, 165, 250, 0.3);
-}
+
+
 
 .match-details {
   margin-bottom: 1.5rem;
@@ -345,12 +273,12 @@
   gap: 0.5rem;
   justify-content: center;
   margin-bottom: 0.75rem;
-  color: #5f6060;
+  color: #e2e6e6 !important;
   font-size: 0.9rem;
 }
 
-.match-description {
-  color: #2c2d2d;
+.mattch-description {
+  color: #e6eaea;
   font-size: 0.8rem;
   text-align: center;
   line-height: 1.4;
@@ -472,7 +400,7 @@
     padding: 0 2rem;
   }
   
-  .hero-title {
+  .hero-ttitle {
     font-size: 3rem;
   }
 }
@@ -484,7 +412,7 @@
     padding: 2rem 1rem;
   }
   
-  .hero-title {
+  .hero-ttitle {
     font-size: 2.5rem;
   }
   

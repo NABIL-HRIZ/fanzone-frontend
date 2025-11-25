@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import '../../styles/UpdateMatch.css';
-
+import Swal from 'sweetalert2';
 const UpdateMatch = () => {
   const navigate = useNavigate();
   const { id } = useParams(); 
@@ -51,13 +51,13 @@ const UpdateMatch = () => {
     fetchMatch();
   }, [id]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+
+  const handleChange=(e)=>{
+    setFormData({
+      ...formData,
+      [e.target.name]:e.target.value
+    })
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -77,7 +77,10 @@ const UpdateMatch = () => {
         }
       );
 
-      alert('Match modifié avec succès!');
+      Swal.fire({
+  title: "Match modifié avec succès!",
+  icon: "success"
+});
       navigate('/admin/matches');
       
     } catch (error) {

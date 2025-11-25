@@ -9,6 +9,7 @@ import {
   FaHome,
   FaChartLine
 } from "react-icons/fa";
+import { IoPlayBackOutline } from "react-icons/io5";
 
 import '../../styles/AdminSideBar.css';
 
@@ -23,8 +24,9 @@ const AdminSideBar = () => {
     { path: "/admin/users/add", icon: FaPlus, label: "Ajouter User" },
     { path: "/admin/matches", icon: FaFutbol, label: "Matches" },
     { path: "/admin/matches/add", icon: FaFutbol, label: "Ajouter Matches" },
-
     { path: "/admin/reservations", icon: FaTicketAlt, label: "Réservations" },
+    { path: "/", icon: IoPlayBackOutline, label: "Retour à pageHome" },
+
   ];
 
   return (

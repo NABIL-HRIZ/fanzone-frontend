@@ -10,6 +10,7 @@ import { MdOutlineUpdate } from "react-icons/md";
 import { FaAngleRight } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
+import { PiMoneyWavyBold } from "react-icons/pi";
 const ShowZones = () => {
   const [zones, setZones] = useState([]);
   const [activeZone, setActiveZone] = useState(null);
@@ -28,17 +29,7 @@ const ShowZones = () => {
   }, []);
 
 
-  const formatMatchDate = (dateString) => {
-    const options = { 
-      weekday: 'short', 
-      year: 'numeric', 
-      month: 'short', 
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    };
-    return new Date(dateString).toLocaleDateString('fr-FR', options);
-  };
+
 
   return (
     <div className="zones-container">
@@ -109,6 +100,7 @@ const ShowZones = () => {
                 <div className="zone-static-content">
                   <h3 className="zone-title">{zone.name}</h3>
                   <p className="zone-city"><FaLocationDot /> {zone.city}</p>
+<span className="pricee-badge">{zone.price} MAD</span>
                 </div>
 
                 
@@ -118,30 +110,46 @@ const ShowZones = () => {
                       <>
                         <div className="match-header">
                           <span className="live-badge">BIENTÔT EN DIRECT</span>
-                          <h4 className="match-title">
-                            {zone.match.team_one_title} VS {zone.match.team_two_title}
-                          </h4>
+                         
                         </div>
                         
                         <div className="match-time">
                           <MdOutlineUpdate />
-                          {formatMatchDate(zone.match.match_date)}
+                          {new Date(zone.match.match_date).toLocaleString()}
                         </div>
 
                         <div className="teams-container">
                           <div className="team">
                             <div className="team-name">{zone.match.team_one_title}</div>
                           </div>
-                          <div className="vs">VS</div>
+                          <div className="vss">VS</div>
                           <div className="team">
                             <div className="team-name">{zone.match.team_two_title}</div>
                           </div>
                         </div>
 
-                        <button className="book-button">
-                          Réserver des billets
-                          <FaAngleRight />
-                        </button>
+                      
+                        <button className='button' style={{marginLeft:"40px"}}>
+  <div class="svg-wrapper-1">
+    <div class="svg-wrapper">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+      >
+        <path fill="none" d="M0 0h24v24H0z"></path>
+        <path
+          fill="currentColor"
+          d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+        ></path>
+      </svg>
+    </div>
+  </div>
+ <Link to={`/zone/${zone.id}`} key={zone.id} style={{ textDecoration: "none",color:"#000"}}>
+                          <span>Réserver des billets</span>
+                          </Link>
+                       </button>
                       </>
                     ) : (
                       <div className="no-match">

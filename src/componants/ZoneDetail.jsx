@@ -35,19 +35,18 @@ const ZoneDetail = () => {
       </div>
     );
 
-  const calculateOccupancy = () => {
-    if (!zone.capacity || !zone.available_seats) return 0;
+  const calculatePocentage = () => {
     return ((zone.capacity - zone.available_seats) / zone.capacity) * 100;
   };
 
-  const getOccupancyStatus = () => {
-    const occupancy = calculateOccupancy();
-    if (occupancy >= 90) return { text: "Presque complet", class: "status-full" };
-    if (occupancy >= 70) return { text: "Places limitées", class: "status-limited" };
+  const getpocentageStatus = () => {
+    const pocentage = calculatePocentage();
+    if (pocentage >= 90) return { text: "Presque complet", class: "status-full" };
+    if (pocentage >= 70) return { text: "Places limitées", class: "status-limited" };
     return { text: "Places disponibles", class: "status-available" };
   };
 
-  const occupancyStatus = getOccupancyStatus();
+  const pocentageStatus = getpocentageStatus();
 
   return (
     <>
@@ -90,30 +89,40 @@ const ZoneDetail = () => {
                     <a 
                       href={`https://www.google.com/maps?q=${zone.latitude},${zone.longitude}`}
                       target="_blank"
-                      rel="noopener noreferrer"
+                    
                       className="map-link"
                       style={{backgroundColor:"transparent"}}
                     >
                       <FaMap className="icon" /> Voir sur Google Maps
                     </a>
+                     
                   </div>
                 )}
               </div>
 
               <div className="detail-card" data-aos="zoom-in" data-aos-delay="100">
-                <h4><FaUsers className="icon" /> Capacité</h4>
+                <h4><FaUsers className="icon" /> Capacité & Prix </h4>
+                   <div>
+                    <p>
+  <strong>Prix :</strong> {Number(zone.price).toFixed(2)} MAD
+</p>
+
+                    </div>
                 <p><strong>Capacité totale:</strong> {zone.capacity} places</p>
                 <p><strong>Places disponibles:</strong> {zone.available_seats} places</p>
                 <div className="capacity-info">
                   <div className="capacity-bar">
                     <div 
                       className="capacity-fill" 
-                      style={{ width: `${calculateOccupancy()}%` }}
+                      style={{ width: `${calculatePocentage()}%` }}
                     ></div>
+                  
                   </div>
-                  <span className={`capacity-text ${occupancyStatus.class}`}>
-                    {occupancyStatus.text}
+                  
+                  <span className={`capacity-text ${pocentageStatus.class}`}>
+                    {pocentageStatus.text}
                   </span>
+                   
                 </div>
               </div>
 
@@ -149,9 +158,31 @@ const ZoneDetail = () => {
               <Link to="/" className="action-btn secondary-btn">
                 <FaArrowLeft className="icon" /> Retour aux zonees
               </Link>
-              <Link to={`/reservation/${zone.id}`} className="action-btn primary-btn">
-                Réserver maintenant
+           
+           
+            <button className='button'>
+             <div class="svg-wrapper-1">
+               <div class="svg-wrapper">
+                 <svg
+                   xmlns="http://www.w3.org/2000/svg"
+                   viewBox="0 0 24 24"
+                   width="24"
+                   height="24"
+                 >
+                   <path fill="none" d="M0 0h24v24H0z"></path>
+                   <path
+                     fill="currentColor"
+                     d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                   ></path>
+                 </svg>
+               </div>
+             </div>
+            <Link to={`/reservation/${zone.id}`} style={{textDecoration:'none'}}>
+                <span>Réserver maintenant</span>
               </Link>
+             </button>
+
+              
             </div>
           </div>
         </div>

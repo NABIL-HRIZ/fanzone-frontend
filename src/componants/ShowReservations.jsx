@@ -81,7 +81,6 @@ const ShowReservations = () => {
   if (error) {
     return (
       <div className="reservations-error">
-        <div className="error-icon">⚠️</div>
         <h3>Une erreur est survenue</h3>
         <p>{error}</p>
         <button onClick={() => window.location.reload()} className="retry-btn">

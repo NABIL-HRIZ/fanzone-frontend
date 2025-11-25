@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/AddUser.css'
+import Swal from 'sweetalert2';
 
 const AddFan = () => {
   const navigate = useNavigate();
@@ -44,7 +45,10 @@ const AddFan = () => {
         }
       );
 
-      alert(response.data.message || 'Fan ajouté avec succès!');
+      await Swal.fire({
+  title: "User ajouté avec succès!",
+  icon: "success"
+});
       navigate('/admin/users'); 
       
     } catch (error) {

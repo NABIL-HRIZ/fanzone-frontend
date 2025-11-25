@@ -5,7 +5,7 @@
     min-height: 100vh;
 }
 
-.matches-header {
+.mattches-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -42,12 +42,7 @@
     border-radius: 2px;
 }
 
-.section-subtitle {
-    font-size: 1.2rem;
-    color: #353636;
-    max-width: 500px;
-    line-height: 1.6;
-}
+
 
 .header-stats {
     display: flex;
@@ -116,31 +111,26 @@
 }
 
 .date-day {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: #06600c;
     line-height: 1;
 }
 
-.date-month {
-    font-size: 0.8rem;
-    color: #1a1a1a;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 0.25rem;
-}
 
-.match-time {
+
+.mattch-time {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: #0b5304;
+    color: #0b5304 !important;
     font-size: 0.9rem;
     font-weight: 500;
 }
 
 .time-icon {
     font-size: 0.8rem;
+    margin-top: -30px;
 }
 
 .teams-section {
@@ -194,7 +184,7 @@
     background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
 }
 
-.team-name {
+.teamm-name {
     font-size: 0.9rem;
     font-weight: 600;
     color: #272828;
@@ -207,14 +197,14 @@
 }
 
 .vs-circle {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.7rem;
+    font-size:1.5rem;
     font-weight: 700;
     color: #9f0e0e;
     border: 2px solid rgba(154, 14, 14, 0.3);
@@ -237,8 +227,9 @@
     font-size: 0.8rem;
 }
 
-.stadium-name {
+.stadiumm-name {
     font-weight: 500;
+    color: #131414;
 }
 
 .match-description {

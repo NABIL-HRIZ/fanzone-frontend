@@ -65,7 +65,7 @@ const CANStats = () => {
     <div className="can-stats">
 
       <div className="stats-header">
-        <div className="header-content">
+        <div className="header-ccontent">
           <div className="tournament-badge">
             <span style={{backgroundColor:'transparent'}}>Les Statistiques de CAN 2023</span>
           </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../../styles/ShowMatches.css';
+import Swal from 'sweetalert2';
 import { FaLocationDot } from "react-icons/fa6";
 
 const ShowMatches = () => {
@@ -38,31 +39,54 @@ const ShowMatches = () => {
 }, []);
 
 
-  const handleDelete = async (id) => {
-    if (!window.confirm("Voulez-vous vraiment supprimer ce match ?")) return;
 
-    try {
-      const token = localStorage.getItem("token");
+const handleDelete = async (id) => {
+  Swal.fire({
+    title: "Êtes-vous sûr ?",
+    text: "Cette action est irréversible !",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Oui, supprimer",
+    cancelButtonText: "Annuler"
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+        const token = localStorage.getItem("token");
 
-      await axios.delete(
-        `http://127.0.0.1:8000/api/match/${id}`,
-        {
-          headers: {
-            Accept: "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+        await axios.delete(
+          `http://127.0.0.1:8000/api/match/${id}`,
+          {
+            headers: {
+              Accept: "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
-      
-      setMatches(matches.filter(match => match.id !== id));
-      alert('Match supprimé avec succès !');
-      
-    } catch (error) {
-      console.error("Erreur lors de la suppression :", error);
-      alert("Erreur lors de la suppression du match");
+        
+        setMatches(prev => prev.filter(match => match.id !== id));
+
+        Swal.fire({
+          title: "Supprimé !",
+          text: "Le match a été supprimé avec succès.",
+          icon: "success"
+        });
+
+      } catch (error) {
+        console.error("Erreur lors de la suppression :", error);
+
+        Swal.fire({
+          icon: "error",
+          title: "Erreur",
+          text: "Une erreur s'est produite lors de la suppression.",
+        });
+      }
     }
-  };
+  });
+};
+
 
 
 
@@ -129,7 +153,7 @@ const ShowMatches = () => {
                     ) : null}
                   
                   </div>
-                  <div className="team-name">{match.team_one_title}</div>
+                  <div className="teamm-name"style={{color:"gray"}}>{match.team_one_title}</div>
                 </div>
 
                 <div className="vs-separator">
@@ -147,14 +171,14 @@ const ShowMatches = () => {
                     ) : null}
                    
                   </div>
-                  <div className="team-name">{match.team_two_title}</div>
+                  <div className="teamm-name" style={{color:"gray"}}>{match.team_two_title}</div>
                 </div>
               </div>
 
               <div className="match-details">
-                <div className="stadium-info">
-                  <span className="stadium-icon"><FaLocationDot /></span>
-                  {match.stadium || 'Stade non spécifié'}
+                <div className="stadium-info" >
+                  <span className="stadium-icon" style={{color:"gray"}}><FaLocationDot /></span>
+                  <span style={{color:"gray"}}>{match.stadium || 'Stade non spécifié'}</span>
                 </div>
                 
                 {match.description && (
@@ -175,7 +199,7 @@ const ShowMatches = () => {
               <div className="match-actions">
                 <Link 
                   to={`/admin/matches/edit/${match.id}`} 
-                  className="edit-btn"
+                  className="editt-btn"
                 >
                   Modifier
                 </Link>

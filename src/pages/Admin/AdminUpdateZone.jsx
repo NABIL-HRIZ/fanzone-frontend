@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import '../../styles/AdminUpdateZone.css';
-
+import Swal from 'sweetalert2';
 const AdminUpdateZone = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -55,7 +55,10 @@ const AdminUpdateZone = () => {
         }
       });
 
-      setMessage('Zone mise à jour avec succès !');
+      Swal.fire({
+  title: "Zone mise à jour avec succès !",
+  icon: "success"
+});
       setTimeout(() => {
         navigate('/admin/zones');
       }, 2000);

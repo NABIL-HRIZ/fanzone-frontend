@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../../styles/AdminZones.css'
+import Swal from 'sweetalert2';
+
+
+
 const AdminZones = () => {
   const [zones, setZones] = useState([]);
   const [totalZones, setTotalZones] = useState(0);
@@ -33,28 +37,55 @@ const AdminZones = () => {
     fetchAllZones();
   }, []);
 
-  const handleDelete = async (zoneId) => {
-    if (!window.confirm('Êtes-vous sûr de vouloir supprimer cette zone ?')) {
-      return;
+
+
+  const handleDelete = async (id) => {
+  Swal.fire({
+    title: "Êtes-vous sûr ?",
+    text: "Cette action est irréversible !",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Oui, supprimer",
+    cancelButtonText: "Annuler"
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+        const token = localStorage.getItem("token");
+
+        await axios.delete(
+          `http://127.0.0.1:8000/api/zone/${id}`,
+          {
+            headers: {
+              Accept: "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        
+        setZones(prev => prev.filter(zone => zone.id !== id));
+
+        Swal.fire({
+          title: "Supprimé !",
+          text: "La zone  a été supprimé avec succès.",
+          icon: "success"
+        });
+
+      } catch (error) {
+        console.error("Erreur lors de la suppression :", error);
+
+        Swal.fire({
+          icon: "error",
+          title: "Erreur",
+          text: "Une erreur s'est produite lors de la suppression.",
+        });
+      }
     }
+  });
+};
 
-    try {
-      const token = localStorage.getItem('token');
-
-      await axios.delete(`http://127.0.0.1:8000/api/zone/${zoneId}`, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Accept': 'application/json'
-        }
-      });
-
-      
-      alert('Zone supprimée avec succès !');
-    } catch (error) {
-      console.error('Erreur lors de la suppression:', error);
-      alert('Impossible de supprimer la zone');
-    }
-  };
 
   const getAvailabilityClass = (available, capacity) => {
     const percentage = (available / capacity) * 100;
@@ -117,7 +148,7 @@ const AdminZones = () => {
                   <td className="actions-cell">
                     <Link 
                       to={`/admin/zones/edit/${zone.id}`} 
-                      className="edit-btn"
+                      className="editt-btn"
                     >
                       Modifier
                     </Link>

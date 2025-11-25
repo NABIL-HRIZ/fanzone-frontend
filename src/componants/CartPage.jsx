@@ -70,7 +70,7 @@ const CartPage = () => {
           </div>
           <h2>Votre panier est vide</h2>
           <p>Découvrez nos matchs passionnants et réservez vos places</p>
-          <Link to="/matches" className="btn-primary">
+          <Link to="/matches" className="back_btn">
             Explorer les matchs
           </Link>
         </div>
@@ -87,7 +87,7 @@ const CartPage = () => {
             Retour aux matchs
           </Link>
           <h1>Votre Panier</h1>
-          <p>{items.length} {items.length > 1 ? 'articles' : 'article'} dans votre panier</p>
+          <p>{items.length} article(s) dans votre panier</p>
         </div>
       </div>
 
@@ -144,7 +144,7 @@ const CartPage = () => {
 
                 <div className="item-price">
                   <span className="price-amount">{(item.price * item.quantity).toFixed(2)} DH</span>
-                  <span className="price-unit">{item.price} DH / place</span>
+                 
                 </div>
 
                 <button 
@@ -170,9 +170,29 @@ const CartPage = () => {
               </div>
             </div>
 
-            <button className="checkout-btn" onClick={handleCheckout}>
-              Payer maintenant
-            </button>
+
+
+              <button className='button' onClick={handleCheckout} style={{marginLeft:"60px"}}>
+              <div class="svg-wrapper-1">
+                <div class="svg-wrapper">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                  >
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                    <path
+                      fill="currentColor"
+                      d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+         
+                                      <span>  Payer maintenant</span>
+                                    
+               </button>
 
             
           </div>
