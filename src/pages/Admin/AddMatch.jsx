@@ -3,81 +3,95 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/AddMatch.css';
 import Swal from 'sweetalert2';
+
 const AddMatch = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     team_one_title: '',
-    team_one_image: '',
+    team_one_image: null,
     team_two_title: '',
-    team_two_image: '',
+    team_two_image: null,
     match_date: '',
     stadium: '',
     description: ''
   });
   const [loading, setLoading] = useState(false);
 
-  
-  const handleChange=(e)=>{
-    setFormData({
-      ...formData,
-      [e.target.name]:e.target.value
-    })
-  }
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
-  setLoading(true);
-
-  try {
-    const token = localStorage.getItem("token");
-
-    const response = await axios.post(
-      "http://127.0.0.1:8000/api/add-match",
-      formData,
-      {
-        headers: {
-          Accept: "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    if (response.data) {
-      await Swal.fire({
-        icon: "success",
-        title: "Match ajouté",
-        text: "Le match a été ajouté avec succès !",
+    if (files) {
+      setFormData({
+        ...formData,
+        [name]: files[0] || null
       });
-
-      navigate("/admin/matches"); 
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value
+      });
     }
+  };
 
-  } catch (error) {
-    Swal.fire({
-      icon: "error",
-      title: "Erreur !",
-      text: error.response?.data?.message || "Erreur lors de l'ajout du match.",
-    });
-  } finally {
-    setLoading(false);
-  }
-};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
+    try {
+      const token = localStorage.getItem("token");
+
+      const form = new FormData();
+      for (const key in formData) {
+        if (formData[key] !== null) {
+          form.append(key, formData[key]);
+        }
+      }
+
+     
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/add-match",
+        form,
+        {
+          headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data"
+          },
+        }
+      );
+
+      if (response.data) {
+        await Swal.fire({
+          icon: "success",
+          title: "Match ajouté",
+          text: "Le match a été ajouté avec succès !",
+        });
+        navigate("/admin/matches");
+      }
+
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Erreur !",
+        text: error.response?.data?.message || "Erreur lors de l'ajout du match.",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="add-match-container">
       <div className="add-match-header">
         <h1>Ajouter un Match</h1>
-        <button 
-          onClick={() => navigate('/admin/matches')} 
-          className="back-btn"
-        >
+        <button onClick={() => navigate('/admin/matches')} className="back-btn">
           ← Retour
         </button>
       </div>
 
       <div className="add-match-card">
         <form onSubmit={handleSubmit} className="match-form">
-          
+
           <div className="form-group">
             <label>Équipe 1 *</label>
             <input
@@ -93,11 +107,10 @@ const AddMatch = () => {
           <div className="form-group">
             <label>Image Équipe 1</label>
             <input
-              type="text"
+              type="file"
+              accept="image/*"
               name="team_one_image"
-              value={formData.team_one_image}
               onChange={handleChange}
-              placeholder="URL de l'image (optionnel)"
             />
           </div>
 
@@ -116,11 +129,10 @@ const AddMatch = () => {
           <div className="form-group">
             <label>Image Équipe 2</label>
             <input
-              type="text"
+              type="file"
+              accept="image/*"
               name="team_two_image"
-              value={formData.team_two_image}
               onChange={handleChange}
-              placeholder="URL de l'image (optionnel)"
             />
           </div>
 
@@ -158,12 +170,7 @@ const AddMatch = () => {
           </div>
 
           <div className="form-buttons">
-          
-            <button 
-              type="submit" 
-             
-              className="submit-btn"
-            >
+            <button type="submit" className="submit-btn" >
              Ajouter le Match
             </button>
           </div>

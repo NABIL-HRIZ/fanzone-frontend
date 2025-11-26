@@ -113,12 +113,12 @@ const AdminZones = () => {
         <table className="zones-table">
           <thead>
             <tr>
+              <th>Zones image</th>
               <th>Nom</th>
               <th>Ville</th>
               <th>Prix</th>
               <th>Capacité</th>
               <th>Places disponibles</th>
-              <th>Date création</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -127,6 +127,9 @@ const AdminZones = () => {
                 const availabilityClass = getAvailabilityClass(zone.available_seats, zone.capacity);
               return (
                 <tr key={zone.id}>
+                  <td>
+                    <img src={`http://127.0.0.1:8000/storage/${zone.image}`} alt="" style={{width:'50px',height:"50px"}} />
+                  </td>
                   <td>
                     <strong>{zone.name}</strong>
                   </td>
@@ -144,7 +147,7 @@ const AdminZones = () => {
                       </div>
                     </div>
                   </td>
-                  <td>{new Date(zone.created_at).toLocaleDateString()}</td>
+                 
                   <td className="actions-cell">
                     <Link 
                       to={`/admin/zones/edit/${zone.id}`} 

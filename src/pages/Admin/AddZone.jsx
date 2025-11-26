@@ -19,7 +19,7 @@ const AddZone = () => {
     capacity: '',
     available_seats: '',
     description: '',
-    image: ''
+    image: null
   });
  
 
@@ -37,12 +37,22 @@ const AddZone = () => {
   }, []);
 
 
- const handleChange=(e)=>{
-  setZone({
-    ...zone,
-    [e.target.name]:e.target.value
-  });
- }
+const handleChange = (e) => {
+  const { name, value, files } = e.target;
+
+  if (name === "image") {
+    setZone({
+      ...zone,
+      image: files[0] 
+    });
+  } else {
+    setZone({
+      ...zone,
+      [name]: value
+    });
+  }
+};
+
 
 
 
@@ -54,14 +64,23 @@ const AddZone = () => {
       const token = localStorage.getItem('token');
       
     
+const formData = new FormData();
 
-      await axios.post('http://127.0.0.1:8000/api/add-zone', zone, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      });
+for (let key in zone) {
+  formData.append(key, zone[key]);
+}
+
+await axios.post(
+  'http://127.0.0.1:8000/api/add-zone',
+  formData,
+  {
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      "Content-Type": "multipart/form-data"
+    }
+  }
+);
+;
       Swal.fire({
   title: "Zone ajoutée avec succès !",
   icon: "success"
@@ -254,23 +273,16 @@ const AddZone = () => {
 
             <div className="input-group">
               <label htmlFor="image">URL de l'image</label>
-              <input 
-                type="text" 
-                id="image" 
-                name="image" 
-                value={zone.image} 
-                onChange={handleChange} 
-                placeholder="https://example.com/image-zone.jpg"
-              />
+             <input 
+  type="file"
+  accept="image/*"
+  id="image"
+  name="image"
+  onChange={handleChange}
+/>
              
             </div>
 
-            {zone.image && (
-              <div className="image-preview">
-               <img  src={`http://localhost:8000/storage/${zone.image}`} />
-                <span>Aperçu de l'image</span>
-              </div>
-            )}
           </div>
         </div>
 

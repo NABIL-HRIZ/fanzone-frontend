@@ -9,8 +9,8 @@ import { FaBars } from "react-icons/fa";
 import { AuthContext } from "../auth/AuthContext";
 
 
-import { useDispatch, useSelector } from "react-redux";
-import { clearCart } from "../redux/CartSlice";
+import {useDispatch, useSelector } from "react-redux";
+
 
 import {
   Navbar,
@@ -19,11 +19,13 @@ import {
   NavDropdown,
   Badge
 } from "react-bootstrap";
+import { clearCart } from "../redux/CartSlice";
 
 function MyNavbar() {
   const { user, setUser } = useContext(AuthContext);
+
+  const dispatch=useDispatch()
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const cartItemsCount = useSelector((state) =>
     state.cart.items.reduce((total, item) => total + item.quantity, 0)
@@ -44,14 +46,14 @@ function MyNavbar() {
       localStorage.removeItem("user");
       localStorage.removeItem("token");
       localStorage.removeItem("roles");
-
-      dispatch(clearCart());
+      dispatch(clearCart())
       setUser(null);
       navigate("/login");
     } catch (err) {
       console.error("Erreur logout:", err);
       localStorage.removeItem("token");
-      dispatch(clearCart());
+      dispatch(clearCart())
+     
       setUser(null);
       navigate("/login");
     }

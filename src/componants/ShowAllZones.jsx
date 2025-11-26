@@ -4,7 +4,7 @@ import '../styles/ShowAllZones.css';
 import { MdDateRange } from "react-icons/md";
 import { IoLocationOutline } from "react-icons/io5";
 import { Link } from 'react-router-dom';
-
+import ZoneSearch from './ZoneSearch';
 const ShowAllZones = () => {
   const [zones, setZones] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -54,6 +54,12 @@ const ShowAllZones = () => {
         <h1>Toutes les Zones</h1>
         <p>Découvrez toutes les Fan Zones disponibles</p>
       </div>
+
+     
+
+        <div className="zone-input search" style={{ position: 'relative', zIndex: 50 ,marginLeft:"600px"}}>
+  <ZoneSearch />
+</div>
 
       <div className="all-zones-grid">
         {zones.map(zone => (
