@@ -95,6 +95,7 @@ const App = () => {
                 <Route path="/zone/:id" element={<ZoneDetail />} />
                 <Route path="/agent/add-scan" element={<QRScanner />} />
 
+
               </Routes>
               <Footer />
             </>
