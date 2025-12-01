@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import '../styles/Success.css';
 import { useDispatch } from "react-redux";
-import { clearCart } from "../redux/CartSlice";
+import { clearCart } from "../redux/CartSlices";
 
 const Success = () => {
   const [countdown, setCountdown] = useState(5);

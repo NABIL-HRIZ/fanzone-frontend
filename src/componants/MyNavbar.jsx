@@ -19,7 +19,7 @@ import {
   NavDropdown,
   Badge
 } from "react-bootstrap";
-import { clearCart } from "../redux/CartSlice";
+import { clearCart } from "../redux/CartSlices";
 
 function MyNavbar() {
   const { user, setUser } = useContext(AuthContext);

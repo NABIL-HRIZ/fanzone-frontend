@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
 
-const CartSlice = createSlice({
+const CartSlicess = createSlice({
   name: "cart",
   initialState: {
     items: storedCart
@@ -32,5 +32,5 @@ updateQuantity: (state, action) => {
   }
 });
 
-export const { addToCart, removeFromCart, clearCart, updateQuantity } = CartSlice.actions;
-export default CartSlice.reducer;
+export const { addToCart, removeFromCart, clearCart, updateQuantity } = CartSlicess.actions;
+export default CartSlicess.reducer;

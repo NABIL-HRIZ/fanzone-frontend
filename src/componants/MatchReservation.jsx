@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../redux/CartSlice';
+import { addToCart } from '../redux/CartSlices';
 import '../styles/MatchReservation.css';
 import { FaLocationDot } from "react-icons/fa6";
 import Swal from 'sweetalert2'
