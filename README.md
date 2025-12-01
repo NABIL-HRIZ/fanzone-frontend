@@ -2,7 +2,7 @@
 
 ## 📜 Description du Projet
 
-Le Front-End de FanZone est l'interface utilisateur qui permet aux **Fans**, **Agents de contrôle** et **Administrateurs** d'interagir avec la plateforme de réservation et de contrôle d'accès pour les zones spectateurs de la CAN 2025.
+Le Front-End de FanZone est l'interface utilisateur qui permet aux **Fans**, **Agents de contrôle** et **Administrateurs** d'interagir avec la plateforme de réservation et de contrôle d'accès pour les zones spectateurs de la CAN 2025 MAROC.
 
 Il est conçu pour être **rapide, réactif** et offrir une expérience utilisateur fluide, que ce soit pour la réservation en ligne ou pour la validation rapide des billets sur site.
 
@@ -76,5 +76,4 @@ Pour lancer le projet Front-End localement :
     `bash
     npm run dev
     # ou yarn dev
-    `
-    L'application sera accessible sur `http://localhost:5173` (port par défaut de Vite).
+    `L'application sera accessible sur`http://localhost:5173` (port par défaut de Vite).
