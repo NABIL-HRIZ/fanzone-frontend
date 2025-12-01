@@ -10,7 +10,7 @@ const Subscibes = () => {
     e.preventDefault();
     try {
       const response = await axios.post(`${API_URL}/api/add-email`, { email });
-      setMessage(response.data.message); 
+      
       Swal.fire({
   title: "Email Envoyée !",
   icon: "success"
