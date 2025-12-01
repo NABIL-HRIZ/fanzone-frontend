@@ -5,7 +5,7 @@ import { FaTicketAlt, FaStreetView } from "react-icons/fa";
 import { MdOutlineSecurity } from "react-icons/md";
 import axios from "axios";
 import { FaLocationDot } from "react-icons/fa6";
-
+import { API_URL } from "../api/api";
 const MatchesHeroSection = () => {
   const [nextMatch, setNextMatch] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -16,7 +16,7 @@ const MatchesHeroSection = () => {
   useEffect(() => {
   const fetchNextMatch = async () => {
     try {
-      const response  = await axios.get('http://localhost:8000/api/show-matches');
+      const response  = await axios.get(`${API_URL}/api/show-matches`);
       const matches = response.data.data;
 
       const now = new Date();

@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Link } from 'react-router-dom';
 import '../styles/Button.css'
-
+import { API_URL } from '../api/api';
 
 
 const AllMatches = () => {
@@ -23,7 +23,7 @@ const AllMatches = () => {
   const fetchMatches = async (page = 1) => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:8000/api/show-matches?page=${page}`);
+      const response = await axios.get(`${API_URL}/api/show-matches?page=${page}`);
       setMatches(response.data.data);
       setTotalMatches(response.data.total);
       setCurrentPage(response.data.current_page);
@@ -43,7 +43,7 @@ const AllMatches = () => {
   useEffect(() => {
     const fetchZones = async () => {
       try {
-        const res = await axios.get('http://localhost:8000/api/show-zones');
+        const res = await axios.get('${API_URL}/api/show-zones');
         setZones(res.data.data);
       } catch (error) {
         console.log('Erreur lors de la récupération des zones', error);
@@ -172,7 +172,7 @@ const AllMatches = () => {
                   <div className="team-logo">
                     {match.team_one_image && (
                       <img
-                        src={`http://127.0.0.1:8000/storage/${match.team_one_image}`}
+                        src={`${API_URL}/storage/${match.team_one_image}`}
                         alt={match.team_one_title}
                       />
                     )}
@@ -188,7 +188,7 @@ const AllMatches = () => {
                   <div className="team-logo">
                     {match.team_two_image && (
                       <img
-                        src={`http://127.0.0.1:8000/storage/${match.team_two_image}`}
+                        src={`${API_URL}/storage/${match.team_two_image}`}
                         alt={match.team_two_title}
                       />
                     )}

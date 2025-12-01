@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import jsQR from "jsqr";
 import axios from "axios";
-
+import { API_URL } from "../api/api";
 export default function QRScanner() {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
@@ -89,7 +89,7 @@ export default function QRScanner() {
       }
 
       const response = await axios.post(
-        "http://localhost:8000/api/scans",
+        `${API_URL}/api/scans`,
         { ticket_id: ticketId },
         {
           headers: {

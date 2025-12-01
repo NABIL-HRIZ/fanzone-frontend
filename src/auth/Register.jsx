@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/Register.css';
 import Swal from 'sweetalert2';
+import { API_URL } from '../api/api';
 const Register = () => {
   const [formData, setFormData] = useState({
     first_name: '',
@@ -27,7 +28,7 @@ const Register = () => {
     e.preventDefault();
     
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/register', formData);
+      const response = await axios.post(`${API_URL}/api/register`, formData);
       
       if (response.data) {
       

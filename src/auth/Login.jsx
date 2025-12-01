@@ -4,6 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import '../styles/Login.css';
 import { useContext } from 'react';
 import { AuthContext } from './AuthContext';
+import { API_URL } from '../api/api';
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({});
@@ -23,7 +24,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/login", formData);
+      const response = await axios.post(`${API_URL}/api/login`, formData);
 
 
  const userData = response.data.user;

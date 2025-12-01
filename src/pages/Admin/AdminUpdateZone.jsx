@@ -269,7 +269,7 @@ const handleChange = (e) => {
             </div>
             {zone.image && (
               <div className="image-preview">
-                <img  src={`http://localhost:8000/storage/${zone.image}`} />
+                <img  src={`${API_URL}/storage/${zone.image}`} />
                 <span>Aperçu de l'image actuelle</span>
               </div>
             )}

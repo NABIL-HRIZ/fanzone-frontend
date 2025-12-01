@@ -11,13 +11,14 @@ import { FaAngleRight } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 import { PiMoneyWavyBold } from "react-icons/pi";
+import { API_URL } from '../api/api';
 const ShowZones = () => {
   const [zones, setZones] = useState([]);
   const [activeZone, setActiveZone] = useState(null);
 
   const fetchZones = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/maroc-zones');
+      const response = await axios.get(`${API_URL}/api/maroc-zones`);
       setZones(response.data); 
     } catch (error) {
       console.error('Erreur lors de la récupération des zones:', error);
@@ -91,7 +92,7 @@ const ShowZones = () => {
             <div className="zone-card">
               <div className="zone-image-container">
                 <img
-                  src={`http://localhost:8000/storage/${zone.image}`}
+                  src={`${API_URL}/storage/${zone.image}`}
                   alt={zone.name}
                   className="zone-image"
                 />

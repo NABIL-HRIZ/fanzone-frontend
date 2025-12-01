@@ -6,6 +6,7 @@ import { addToCart } from '../redux/CartSlices';
 import '../styles/MatchReservation.css';
 import { FaLocationDot } from "react-icons/fa6";
 import Swal from 'sweetalert2'
+import { API_URL } from '../api/api';
 const MatchReservation = () => {
   const { id } = useParams();
   const [zone, setZone] = useState(null);
@@ -15,7 +16,7 @@ const MatchReservation = () => {
   useEffect(() => {
     const fetchZone = async () => {
       try {
-        const res = await axios.get(`http://127.0.0.1:8000/api/zone-details/${id}`);
+        const res = await axios.get(`${API_URL}/api/zone-details/${id}`);
         setZone(res.data);
       } catch (err) {
         console.error("Erreur récupération zone:", err);
@@ -116,7 +117,7 @@ const MatchReservation = () => {
                 {zone.image && (
             <div className="image-section">
               <h3>Image de la zone</h3>
-              <img  src={`http://localhost:8000/storage/${zone.image}`} alt={zone.name} className="zone-image" />
+              <img  src={`${API_URL}/storage/${zone.image}`} alt={zone.name} className="zone-image" />
               
             </div>
           )}

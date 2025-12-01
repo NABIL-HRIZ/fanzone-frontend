@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/Subscribe.css';
 import Swal from 'sweetalert2'
+import { API_URL } from '../api/api';
 const Subscibes = () => {
   const [email, setEmail] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8000/api/add-email', { email });
+      const response = await axios.post(`${API_URL}/api/add-email`, { email });
       setMessage(response.data.message); 
       Swal.fire({
   title: "Email Envoyée !",
