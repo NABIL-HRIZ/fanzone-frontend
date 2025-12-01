@@ -1,17 +1,44 @@
 name: FanZone Frontend CI
 
 on:
-  push:
-    branches: ["main"]
+push:
+branches: [ "main" ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+build:
+runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: "18"
-      - run: npm install
-      - run: npm run build
+```
+steps:
+  # -------------------
+  # 📥 Checkout code
+  # -------------------
+  - name: Checkout repository
+    uses: actions/checkout@v3
+
+  # -------------------
+  # 🟧 Setup Node.js
+  # -------------------
+  - name: Setup Node.js
+    uses: actions/setup-node@v3
+    with:
+      node-version: '20'
+
+  # -------------------
+  # 📦 Install dependencies
+  # -------------------
+  - name: Install React dependencies
+    run: |
+      cd front_end
+      npm install
+
+  # -------------------
+  # 🛠️ Build React/Vite
+  # -------------------
+  - name: Build React
+    run: |
+      cd front_end
+      npm run build
+
+
+```
