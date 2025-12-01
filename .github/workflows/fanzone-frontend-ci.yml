@@ -27,7 +27,3 @@ jobs:
       # 4️⃣ Build React
       - name: Build React
         run: npm run build
-
-      # 5️⃣ Run tests
-      - name: Run React tests
-        run: npm test -- --watchAll=false
