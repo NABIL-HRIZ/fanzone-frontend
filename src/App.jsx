@@ -4,7 +4,7 @@ import AdminDashboard from './pages/Admin/AdminDashboard';
 import AdminContent from './pages/Admin/AdminContent';
 import AdminZones from './pages/Admin/AdminZones';
 import AddZone from './pages/Admin/AddZone';
-import MyNavbar from './componants/MyNavbar';
+
 import Footer from './componants/Footer';
 import Login from './auth/Login';
 import Register from './auth/Register';
@@ -34,6 +34,7 @@ import UpdateMatch from './pages/Admin/UpdateMatch';
 import AdminShowReservations from './pages/Admin/AdminShowReservations';
 import ReservationDetails from './pages/Admin/ReservationDetails';
 import Profile from './componants/Profile';
+import MyNavbar from './componants/myNavbar';
 
 const App = () => {
   return (
