@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import '../../styles/UpdateUser.css'
+import { API_URL } from '../../api/api';
 
 
 const UpdateUser = () => {
@@ -27,7 +28,7 @@ const UpdateUser = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `http://127.0.0.1:8000/api/fan-details/${id}`,
+          `${API_URL}/api/fan-details/${id}`,
           {
             headers: {
               Accept: "application/json",
@@ -85,7 +86,7 @@ const UpdateUser = () => {
       const token = localStorage.getItem("token");
 
       const response = await axios.put(
-        `http://127.0.0.1:8000/api/fan/${id}`,
+        `${API_URL}/api/fan/${id}`,
         submitData,
         {
           headers: {

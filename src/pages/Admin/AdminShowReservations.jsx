@@ -4,6 +4,7 @@ import { CiMoneyBill } from "react-icons/ci";
 import { FaDatabase } from "react-icons/fa";
 import '../../styles/AdminShowReservations.css'
 import { Link } from 'react-router-dom';
+import { API_URL } from '../../api/api';
 
 const AdminShowReservations = () => {
   const [reservations, setReservations] = useState([]);
@@ -16,7 +17,7 @@ const AdminShowReservations = () => {
         const token = localStorage.getItem("token");
         
         const response = await axios.get(
-          "http://127.0.0.1:8000/api/reservations", 
+          `${API_URL}/api/reservations`, 
           {
             headers: {
               Accept: "application/json",

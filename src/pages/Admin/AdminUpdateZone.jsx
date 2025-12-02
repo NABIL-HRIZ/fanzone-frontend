@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import '../../styles/AdminUpdateZone.css';
 import Swal from 'sweetalert2';
+import { API_URL } from '../../api/api';
 const AdminUpdateZone = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const AdminUpdateZone = () => {
   useEffect(() => {
     const fetchZone = async () => {
       try {
-        const res = await axios.get(`http://127.0.0.1:8000/api/zone-details/${id}`);
+        const res = await axios.get(`${API_URL}/api/zone-details/${id}`);
         setZone(res.data);
       } catch (error) {
         console.error('Erreur fetching zone details:', error);
@@ -47,7 +48,7 @@ const AdminUpdateZone = () => {
         image: zone.image || ''
       };
 
-      await axios.put(`http://127.0.0.1:8000/api/zone/${id}`, formData, {
+      await axios.put(`${API_URL}/api/zone/${id}`, formData, {
         headers: {
           'Accept': 'application/json',
           'Authorization': `Bearer ${token}`,

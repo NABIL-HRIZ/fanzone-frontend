@@ -5,6 +5,7 @@ import '../styles/ZoneDetail.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { FaMapMarkerAlt, FaUsers, FaChair, FaCalendar, FaClock, FaMap, FaArrowLeft } from 'react-icons/fa';
+import { API_URL } from '../api/api';
 
 const ZoneDetail = () => {
   const [zone, setZone] = useState(null);
@@ -17,7 +18,7 @@ const ZoneDetail = () => {
   useEffect(() => {
     const fetchZone = async () => {
       try {
-        const res = await axios.get(`http://127.0.0.1:8000/api/zone-details/${id}`);
+        const res = await axios.get(`${API_URL}/api/zone-details/${id}`);
         setZone(res.data);
       } catch (error) {
         console.error("Erreur de récupération zone:", error);
@@ -53,14 +54,14 @@ const ZoneDetail = () => {
       <div
         className="zonee-detail"
         style={{
-          background: `url(http://127.0.0.1:8000/storage/${zone.image}) no-repeat center / cover`
+          background: `url(${API_URL}/storage/${zone.image}) no-repeat center / cover`
         }}
       >
         <div className="zonee-detail__overlay" />
 
         <div className="zonee-detail__content">
           <div className="zonee-img" data-aos="fade-right">
-            <img src={`http://127.0.0.1:8000/storage/${zone.image}`} alt={zone.name} />
+            <img src={`${API_URL}/storage/${zone.image}`} alt={zone.name} />
           </div>
 
           <div className="zonee-infos" data-aos="fade-left">

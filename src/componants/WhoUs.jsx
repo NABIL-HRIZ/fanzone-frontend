@@ -10,7 +10,7 @@ const WhoUs = () => {
   return (
     <section className="who-us">
       <div className="who-us-container">
-        {/* Grid d'images */}
+       
         <div className="parent">
           <div className="div1">
             <img src={fan1} alt="Fan Zone 1" className="grid-image" />

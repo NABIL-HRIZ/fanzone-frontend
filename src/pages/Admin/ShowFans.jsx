@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/ShowFans.css';
 import Swal from 'sweetalert2';
+import { API_URL } from '../../api/api';
 
 const ShowFans = () => {
   const [fans, setFans] = useState([]);
@@ -14,7 +15,7 @@ const ShowFans = () => {
         const token = localStorage.getItem("token");
 
         const response = await axios.get(
-          "http://127.0.0.1:8000/api/show-fans",
+          `${API_URL}/api/show-fans`,
           {
             headers: {
               Accept: "application/json",
@@ -53,7 +54,7 @@ const ShowFans = () => {
         const token = localStorage.getItem("token");
 
         await axios.delete(
-          `http://127.0.0.1:8000/api/fan/${id}`,
+          `${API_URL}/api/fan/${id}`,
           {
             headers: {
               Accept: "application/json",

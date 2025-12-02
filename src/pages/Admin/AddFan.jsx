@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/AddUser.css'
 import Swal from 'sweetalert2';
+import { API_URL } from '../../api/api';
 
 const AddFan = () => {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ const AddFan = () => {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/add-fan",
+        `${API_URL}/api/add-fan`,
         formData,
         {
           headers: {

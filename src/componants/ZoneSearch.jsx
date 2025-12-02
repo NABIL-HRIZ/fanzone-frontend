@@ -3,6 +3,7 @@ import axios from 'axios';
 import { FaSearch} from 'react-icons/fa';
 import '../styles/ZoneSearch.css';
 import { Link } from 'react-router-dom';
+import { API_URL } from '../api/api';
 const ZoneSearch = () => {
   const [search, setSearch] = useState('');
   const [zones, setZones] = useState([]);
@@ -19,7 +20,7 @@ const ZoneSearch = () => {
     setLoading(true);
     setShowResults(true);
     try {
-      const response = await axios.get('http://127.0.0.1:8000/api/zone/search', {
+      const response = await axios.get(`${API_URL}/api/zone/search`, {
         params: { search }
       });
       setZones(response.data.data || []);
@@ -57,7 +58,7 @@ const ZoneSearch = () => {
               <div key={zone.id} className="result-simple">
             
                   <img 
-                   src={`http://127.0.0.1:8000/storage/${zone.image}`}
+                   src={`${API_URL}/storage/${zone.image}`}
                     alt={zone.name} 
                     className="result-image-simple"
                   />

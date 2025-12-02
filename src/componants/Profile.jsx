@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import '../styles/Profile.css'
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
+import { API_URL } from '../api/api'
 
 
 const Profile = () => {
@@ -24,7 +25,7 @@ const Profile = () => {
         const token = localStorage.getItem('token');
 
         const response = await axios.get(
-          'http://127.0.0.1:8000/api/profile',
+          `${API_URL}/api/profile`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -77,7 +78,7 @@ const Profile = () => {
       }
 
       const response = await axios.put(
-        'http://127.0.0.1:8000/api/profile',
+        `${API_URL}/api/profile`,
         submitData,
         {
           headers: {

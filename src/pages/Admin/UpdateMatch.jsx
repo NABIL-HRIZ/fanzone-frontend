@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import '../../styles/UpdateMatch.css';
 import Swal from 'sweetalert2';
+import { API_URL } from '../../api/api';
 const UpdateMatch = () => {
   const navigate = useNavigate();
   const { id } = useParams(); 
@@ -22,7 +23,7 @@ const UpdateMatch = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `http://127.0.0.1:8000/api/match-details/${id}`,
+          `${API_URL}/api/match-details/${id}`,
           {
             headers: {
               Accept: "application/json",
@@ -67,7 +68,7 @@ const UpdateMatch = () => {
       const token = localStorage.getItem("token");
 
       const response = await axios.put(
-        `http://127.0.0.1:8000/api/match/${id}`,
+        `${API_URL}/api/match/${id}`,
         formData,
         {
           headers: {

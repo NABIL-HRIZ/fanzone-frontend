@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../../styles/AdminZones.css'
 import Swal from 'sweetalert2';
+import { API_URL } from '../../api/api';
 
 
 
@@ -19,7 +20,7 @@ const AdminZones = () => {
         let lastPage = 1;
 
         while (page <= lastPage) {
-          const response = await axios.get(`http://127.0.0.1:8000/api/show-zones?page=${page}`);
+          const response = await axios.get(`${API_URL}/api/show-zones?page=${page}`);
           allZones = [...allZones, ...response.data.data];
           lastPage = response.data.last_page;
           page++;
@@ -55,7 +56,7 @@ const AdminZones = () => {
         const token = localStorage.getItem("token");
 
         await axios.delete(
-          `http://127.0.0.1:8000/api/zone/${id}`,
+          `${API_URL}/api/zone/${id}`,
           {
             headers: {
               Accept: "application/json",
@@ -128,7 +129,7 @@ const AdminZones = () => {
               return (
                 <tr key={zone.id}>
                   <td>
-                    <img src={`http://127.0.0.1:8000/storage/${zone.image}`} alt="" style={{width:'50px',height:"50px"}} />
+                    <img src={`${API_URL}/storage/${zone.image}`} alt="" style={{width:'50px',height:"50px"}} />
                   </td>
                   <td>
                     <strong>{zone.name}</strong>

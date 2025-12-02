@@ -5,6 +5,7 @@ import { MdDateRange } from "react-icons/md";
 import { IoLocationOutline } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 import ZoneSearch from './ZoneSearch';
+import { API_URL } from '../api/api';
 const ShowAllZones = () => {
   const [zones, setZones] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -14,7 +15,7 @@ const ShowAllZones = () => {
   const fetchZones = async (page = 1) => {
     setLoading(true);
     try {
-      const res = await axios.get(`http://127.0.0.1:8000/api/show-zones?page=${page}`);
+      const res = await axios.get(`${API_URL}/api/show-zones?page=${page}`);
 
       setZones(res.data.data);
       setCurrentPage(res.data.current_page);
@@ -68,7 +69,7 @@ const ShowAllZones = () => {
 
               <div className="zone-imaage">
                 <img
-                  src={`http://127.0.0.1:8000/storage/${zone.image}`}
+                  src={`${API_URL}/storage/${zone.image}`}
                   alt={zone.name}
                 
                 />

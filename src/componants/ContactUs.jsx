@@ -3,6 +3,7 @@ import axios from "axios";
 import { FaPaperPlane } from "react-icons/fa";
 import Swal from "sweetalert2";
 import "../styles/ContactUs.css";
+import { API_URL } from "../api/api";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -26,7 +27,7 @@ const ContactUs = () => {
 
     try {
       const { data } = await axios.post(
-        "http://127.0.0.1:8000/api/contact",
+        `${API_URL}/api/contact`,
         formData
       );
 

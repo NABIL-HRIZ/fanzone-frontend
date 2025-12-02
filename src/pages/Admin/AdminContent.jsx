@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import '../../styles/AdminContent.css'
 import { BarChart, Legend, XAxis, YAxis, CartesianGrid, Tooltip, Bar } from 'recharts';
+import { API_URL } from "../../api/api";
 
 const AdminContent = () => {
   const [users, setUsers] = useState([]);
@@ -19,7 +20,7 @@ const [admins,setAdmins]=useState([])
       try {
         const token = localStorage.getItem("token");
 
-        const userRes = await axios.get("http://127.0.0.1:8000/api/show-fans", {
+        const userRes = await axios.get(`${API_URL}/api/show-fans`, {
           headers: {
             Accept: "application/json",
             Authorization: `Bearer ${token}`,
@@ -38,7 +39,7 @@ const [admins,setAdmins]=useState([])
           .slice(0, 5);
         setLatestUsers(latest);
 
-        const zoneRes = await axios.get("http://127.0.0.1:8000/api/show-zones", {
+        const zoneRes = await axios.get(`${API_URL}/api/show-zones`, {
           headers: {
             Accept: "application/json",
             Authorization: `Bearer ${token}`,

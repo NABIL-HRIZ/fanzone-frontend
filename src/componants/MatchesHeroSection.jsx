@@ -115,7 +115,7 @@ const MatchesHeroSection = () => {
                   <div className="team-logo">
                    
                       <img 
-                       src={`http://127.0.0.1:8000/storage/${nextMatch.team_one_image}`}
+                       src={`${API_URL}/storage/${nextMatch.team_one_image}`}
                         alt={nextMatch.team_one_ttitle}
                       />
                   
@@ -131,7 +131,7 @@ const MatchesHeroSection = () => {
                   <div className="team-logo">
                     
                       <img 
-                        src={`http://127.0.0.1:8000/storage/${nextMatch.team_two_image}`}
+                        src={`${API_URL}/storage/${nextMatch.team_two_image}`}
                         alt={nextMatch.team_two_ttitle}
                       />
                     

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { API_URL } from '../../api/api';
 
 
 const AddZone = () => {
@@ -26,7 +27,7 @@ const AddZone = () => {
   useEffect(() => {
     const fetchMatches = async () => {
       try {
-        const res = await axios.get('http://127.0.0.1:8000/api/show-matches');
+        const res = await axios.get(`${API_URL}/api/show-matches`);
         setMatches(res.data.data);
       } catch (error) {
         console.error('Erreur fetching matches:', error);
@@ -71,7 +72,7 @@ for (let key in zone) {
 }
 
 await axios.post(
-  'http://127.0.0.1:8000/api/add-zone',
+  `${API_URL}/api/add-zone`,
   formData,
   {
     headers: {

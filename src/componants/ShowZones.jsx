@@ -15,11 +15,13 @@ import { API_URL } from '../api/api';
 const ShowZones = () => {
   const [zones, setZones] = useState([]);
   const [activeZone, setActiveZone] = useState(null);
+  const [loading,setLoading]=useState(true)
 
   const fetchZones = async () => {
     try {
       const response = await axios.get(`${API_URL}/api/maroc-zones`);
       setZones(response.data); 
+      setLoading(false)
     } catch (error) {
       console.error('Erreur lors de la récupération des zones:', error);
     }
@@ -29,6 +31,11 @@ const ShowZones = () => {
     fetchZones();
   }, []);
 
+  if(loading){
+    <div>
+      No zone trouve
+    </div>
+  }
 
 
 

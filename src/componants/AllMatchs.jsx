@@ -43,7 +43,7 @@ const AllMatches = () => {
   useEffect(() => {
     const fetchZones = async () => {
       try {
-        const res = await axios.get('${API_URL}/api/show-zones');
+        const res = await axios.get(`${API_URL}/api/show-zones`);
         setZones(res.data.data);
       } catch (error) {
         console.log('Erreur lors de la récupération des zones', error);

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import '../../styles/ShowMatches.css';
 import Swal from 'sweetalert2';
 import { FaLocationDot } from "react-icons/fa6";
+import { API_URL } from '../../api/api';
 
 const ShowMatches = () => {
   const [matches, setMatches] = useState([]);
@@ -19,7 +20,7 @@ const ShowMatches = () => {
       let lastPage = 1;
 
       do {
-        const response = await axios.get(`http://127.0.0.1:8000/api/show-matches?page=${page}`);
+        const response = await axios.get(`${API_URL}/api/show-matches?page=${page}`);
         const data = response.data.data;
         allMatches = [...allMatches, ...data];
         lastPage = response.data.last_page ;
@@ -56,7 +57,7 @@ const handleDelete = async (id) => {
         const token = localStorage.getItem("token");
 
         await axios.delete(
-          `http://127.0.0.1:8000/api/match/${id}`,
+          `${API_URL}/api/match/${id}`,
           {
             headers: {
               Accept: "application/json",
@@ -146,7 +147,7 @@ const handleDelete = async (id) => {
                   <div className="team-logo">
                     {match.team_one_image ? (
                       <img 
-                        src={`http://127.0.0.1:8000/storage/${match.team_one_image}`}
+                        src={`${API_URL}/storage/${match.team_one_image}`}
                         alt={match.team_one_title}
                         
                       />
@@ -164,7 +165,7 @@ const handleDelete = async (id) => {
                   <div className="team-logo">
                     {match.team_two_image ? (
                       <img 
-                       src={`http://127.0.0.1:8000/storage/${match.team_two_image}`}
+                       src={`${API_URL}/storage/${match.team_two_image}`}
                         alt={match.team_two_title}
                        
                       />

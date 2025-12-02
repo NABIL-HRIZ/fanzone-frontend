@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/AddMatch.css';
 import Swal from 'sweetalert2';
+import { API_URL } from '../../api/api';
 
 const AddMatch = () => {
   const navigate = useNavigate();
@@ -49,7 +50,7 @@ const AddMatch = () => {
 
      
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/add-match",
+        `${API_URL}/api/add-match`,
         form,
         {
           headers: {

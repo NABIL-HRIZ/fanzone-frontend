@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import '../../styles/ReservationDetails.css';
   import { FaPrint } from "react-icons/fa";
+import { API_URL } from '../../api/api';
 
 const ReservationDetails = () => {
   const { id } = useParams();
@@ -15,7 +16,7 @@ const ReservationDetails = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `http://127.0.0.1:8000/api/reservations/${id}`,
+          `${API_URL}/api/reservations/${id}`,
           {
             headers: {
               Accept: "application/json",
@@ -45,7 +46,7 @@ const ReservationDetails = () => {
   
     (async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/download-ticket/${reservationId}`, {
+        const response = await axios.get(`${API_URL}/api/download-ticket/${reservationId}`, {
           headers: { Authorization: `Bearer ${token}` },
           responseType: 'blob',
         });

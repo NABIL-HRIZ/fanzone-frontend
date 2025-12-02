@@ -20,6 +20,7 @@ import {
   Badge
 } from "react-bootstrap";
 import { clearCart } from "../redux/CartSlices";
+import { API_URL } from "../api/api";
 
 function MyNavbar() {
   const { user, setUser } = useContext(AuthContext);
@@ -37,7 +38,7 @@ function MyNavbar() {
     try {
      
         await axios.post(
-          "http://127.0.0.1:8000/api/logout",
+          `${API_URL}/api/logout`,
         
           { headers: { Authorization: `Bearer ${token}` } }
         );

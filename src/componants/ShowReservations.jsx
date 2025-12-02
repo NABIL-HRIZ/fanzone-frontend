@@ -4,6 +4,7 @@ import { AuthContext } from '../auth/AuthContext';
 import { FaTicketAlt, FaCalendar, FaMoneyBillWave, FaCheckCircle, FaClock, FaMapMarkerAlt } from 'react-icons/fa';
 import '../styles/ShowReservations.css';
 import { IoIosPricetag } from "react-icons/io";
+import { API_URL } from '../api/api';
 const ShowReservations = () => {
   const { user } = useContext(AuthContext);
   const [reservations, setReservations] = useState([]);
@@ -17,7 +18,7 @@ const ShowReservations = () => {
 
       const token = localStorage.getItem('token');
       try {
-        const res = await axios.get('http://127.0.0.1:8000/api/reservations/my', {
+        const res = await axios.get(`${API_URL}/api/reservations/my`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -45,7 +46,7 @@ const ShowReservations = () => {
 
   (async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/download-ticket/${reservationId}`, {
+      const response = await axios.get(`${API_URL}/api/download-ticket/${reservationId}`, {
         headers: { Authorization: `Bearer ${token}` },
         responseType: 'blob',
       });
